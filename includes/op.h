@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/09/05 07:23:29 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/05 09:45:04 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct		s_op
 	int		cycles;
 	char	description[50];
 	int		acb;
-	int		label_size;
+	int		encoding;
 }					t_op;
 
 #endif

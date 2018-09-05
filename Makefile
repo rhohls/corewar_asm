@@ -6,7 +6,7 @@
 #    By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 13:08:28 by rhohls            #+#    #+#              #
-#    Updated: 2018/09/05 08:58:17 by rhohls           ###   ########.fr        #
+#    Updated: 2018/09/05 12:35:31 by rhohls           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ LIBF = $(LIB_PATH)libft.a
 all: $(ASSEMBLER)
 
 $(ASSEMBLER): $(OBJ) $(ASSEMBLER_MAIN)
-	@make -C./libft/
-	@$(CC)  -o $@ $(LIBF) $(OBJ) $(ASSEMBLER_MAIN)
+	@make -C $(LIB_PATH)
+	@$(CC) -o $@ $(LIBF) $(OBJ) $(ASSEMBLER_MAIN)
 	@echo "\x1b[32m"Finished making $@"\x1b[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c

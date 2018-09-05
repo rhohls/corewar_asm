@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 07:28:33 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 08:59:33 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/05 11:27:26 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_asm
 
 
 void	read_file(char *file_name, t_asm *asm_data);
+void	set_op_tab(t_asm *asm_data);
 
 
 #endif

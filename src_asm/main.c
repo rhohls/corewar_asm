@@ -6,15 +6,23 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 07:11:41 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 09:02:21 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/05 12:39:11 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
+void init_asm(t_asm *asm_data)
+{
+	set_op_tab(asm_data);
+	asm_data->file_lines = NULL;
+}
+
 int main(int argc, char **argv)
 {
 	t_asm	asm_data;
+	
+	init_asm(&asm_data);
 	
 	if (argc < 2)
 	{
@@ -23,6 +31,7 @@ int main(int argc, char **argv)
 	}
 	else //for each file loop
 	{
+		init_asm(&asm_data);
 		// ft_putstr("found a file, nice\n");
 		read_file(argv[1], &asm_data);
 	}
