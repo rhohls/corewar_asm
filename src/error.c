@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 07:28:33 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 08:59:33 by rhohls           ###   ########.fr       */
+/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/05 08:56:52 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-# define ASM_H
+#include "../includes/asm.h"
 
-# include "op.h"
-# include "../libft/includes/libft.h"
-
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
-
-
-typedef struct	s_asm
+void	exit_str(char *str)
 {
-	t_op		op_table[17];
-	t_list		*file_lines;
-}				t_asm;
-
-
-
-
-
-void	read_file(char *file_name, t_asm *asm_data);
-
-
-#endif
+	ft_putstr(str);
+	exit (0);
+}
