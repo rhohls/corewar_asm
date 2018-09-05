@@ -6,7 +6,7 @@
 #    By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/01 07:07:02 by rhohls            #+#    #+#              #
-#    Updated: 2018/08/28 12:17:33 by rhohls           ###   ########.fr        #
+#    Updated: 2018/09/05 12:26:47 by rhohls           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,11 @@ SRC_FILE =	ft_stacknew.c	\
 			ft_whitespace.c	\
 			ft_printf.c		\
 			ft_dprintf.c	\
+			ft_stackdel.c	\
+			ft_stackdup.c	\
+			ft_stackrev.c	\
+			ft_strstack.c	\
+			
 
 OBJ_FILE = $(SRC_FILE:%.c=%.o)
 

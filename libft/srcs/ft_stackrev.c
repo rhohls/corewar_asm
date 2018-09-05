@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_stackrev.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 13:55:39 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 12:28:12 by rhohls           ###   ########.fr       */
+/*   Created: 2018/09/05 11:35:53 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/05 12:12:18 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdlib.h>
 
-void	ft_lstadd(t_list **alst, t_list *newlst)
+void		ft_stackrev(t_stack *stack)
 {
-	if (alst && newlst)
-	{
-		newlst->next = *alst;
-		*alst = newlst;
-	}
-}
+	t_stack	*new;
+	t_list	*node;
+	int		i;
 
-void	ft_lstaddfront(t_list **alst, t_list *new_lst)
-{
-	t_list *node;
-
-	if (!alst || !new_lst)
+	i = stack->length;
+	if (!stack || !(stack->start))
 		return ;
-	if (*alst == NULL)
+	new = ft_stacknew();
+	node = stack->start;
+	while (i > 0 && node)
 	{
-		*alst = new_lst;
-		return ;
+		node = ft_stackpop(stack);
+		ft_stackpush(new, node);
+		i--;
 	}
-	node = *alst;
-	while (node->next != NULL)
-		node = node->next;
-	node->next = new_lst;
+	stack->start = new->start;
+	stack->length = new->length;
+	free(new);
 }

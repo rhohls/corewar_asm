@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhohls <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 11:28:36 by rhohls            #+#    #+#             */
-/*   Updated: 2018/07/17 08:56:25 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/05 12:27:57 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,16 @@ int					ft_atoi_long(const char *str);
 int					ft_strcount(char **str);
 int					ft_printf(char *input, ...);
 int					ft_dprintf(int fd, char *input, ...);
+
+void				ft_del_onlylist(t_list **alst);
+void				ft_del_onlystack(t_stack **stack);
+void				ft_stackdel(t_stack **stack, void (*del)(void*, size_t));
+t_stack				*ft_stackdup(t_stack *stack);
+t_list				*ft_lstdup(t_list *node);
+void				ft_stackrev(t_stack *stack);
+void				ft_lstaddfront(t_list **alst, t_list *new_lst);
+
+int					ft_strinlist(char *str, char **list, int list_len);
+int					ft_strinstack(char *str, t_stack *stack_x);
+
 #endif

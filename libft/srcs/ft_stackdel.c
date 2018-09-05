@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_stackdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 13:55:39 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 12:28:12 by rhohls           ###   ########.fr       */
+/*   Created: 2018/09/05 11:35:53 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/05 12:28:17 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdlib.h>
 
-void	ft_lstadd(t_list **alst, t_list *newlst)
+void		ft_stackdel(t_stack **stack, void (*del)(void*, size_t))
 {
-	if (alst && newlst)
+	if (stack && *stack)
 	{
-		newlst->next = *alst;
-		*alst = newlst;
+		ft_lstdel(&((*stack)->start), del);
+		free(*stack);
+		*stack = NULL;
 	}
 }
 
-void	ft_lstaddfront(t_list **alst, t_list *new_lst)
+void		ft_del_onlystack(t_stack **stack)
 {
-	t_list *node;
-
-	if (!alst || !new_lst)
-		return ;
-	if (*alst == NULL)
+	if (stack && *stack)
 	{
-		*alst = new_lst;
-		return ;
+		ft_del_onlylist(&((*stack)->start));
+		free(*stack);
+		*stack = NULL;
 	}
-	node = *alst;
-	while (node->next != NULL)
-		node = node->next;
-	node->next = new_lst;
 }
