@@ -6,7 +6,7 @@
 #    By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/17 13:08:28 by rhohls            #+#    #+#              #
-#    Updated: 2018/09/05 08:25:47 by rhohls           ###   ########.fr        #
+#    Updated: 2018/09/05 08:58:17 by rhohls           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ INC_PATH = ./includes/
 LIB_PATH = ./libft/
 
 # Files
-SRC_FILE =	
+SRC_FILE =	error.c	\
+			op.c	\
+			read_file.c	\
 	
 
 OBJ_FILE = $(SRC_FILE:%.c=%.o)
@@ -45,6 +47,7 @@ $(ASSEMBLER): $(OBJ) $(ASSEMBLER_MAIN)
 	@echo "\x1b[32m"Finished making $@"\x1b[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
 	@$(CC) -I$(INC_PATH) -o $@ -c $<
 	@echo Making "\x1b[35m"$@"\x1b[0m"
 
