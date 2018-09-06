@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   ft_stackrev.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 07:28:33 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 11:27:26 by rhohls           ###   ########.fr       */
+/*   Created: 2018/09/05 11:35:53 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/05 12:12:18 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-# define ASM_H
+#include "../includes/libft.h"
+#include <stdlib.h>
 
-# include "op.h"
-# include "../libft/includes/libft.h"
-
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
-
-
-typedef struct	s_asm
+void		ft_stackrev(t_stack *stack)
 {
-	t_op		op_table[17];
-	t_list		*file_lines;
-	t_list		*clean_program;
-}				t_asm;
+	t_stack	*new;
+	t_list	*node;
+	int		i;
 
-void	read_file(char *file_name, t_asm *asm_data, t_header *champ);
-void	set_op_tab(t_asm *asm_data);
-
-
-#endif
+	i = stack->length;
+	if (!stack || !(stack->start))
+		return ;
+	new = ft_stacknew();
+	node = stack->start;
+	while (i > 0 && node)
+	{
+		node = ft_stackpop(stack);
+		ft_stackpush(new, node);
+		i--;
+	}
+	stack->start = new->start;
+	stack->length = new->length;
+	free(new);
+}
