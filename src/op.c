@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2018/09/05 09:45:57 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/06 07:10:03 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_op
 */
 // index of op starting at 1 ??? NANI!!
 // check also id ret
+
 static t_op	op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
@@ -50,7 +51,7 @@ static t_op	op_tab[17] =
 void	set_op_tab(t_asm *asm_data)
 {
 	int	i;
-
+	
 	i = 0;
 	while (i < 17)
 	{

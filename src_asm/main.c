@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 07:11:41 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/05 12:39:11 by rhohls           ###   ########.fr       */
+/*   Updated: 2018/09/06 07:18:39 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,27 @@ int main(int argc, char **argv)
 	}
 	else //for each file loop
 	{
-		init_asm(&asm_data);
-		// ft_putstr("found a file, nice\n");
-		read_file(argv[1], &asm_data);
+		// init_asm(&asm_data);
+		// read_file(argv[1], &asm_data);
+		// strsplit on each line
+		// if there is label remove it
+		// (leave only instructions)
+		// store current PC/adress and label in lnked list
+		// verify each instruction (error check)
+		// count bytes needed adjust PC/adress (important for label)
+		// ?
+		// either :
+		// write instructions per line into file (leave empty space for label
+		// come back write label later
+		// or:
+		// go through full file
+		// error check and get all label adress
+		// then write into file
+		
+		// also need header (which has file size)
+		//
 	}
+	
+	
 	return (0);
 }
