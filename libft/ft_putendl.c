@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/11 19:04:04 by marvin           ###   ########.fr       */
+/*   Created: 2018/05/25 10:26:37 by swilson           #+#    #+#             */
+/*   Updated: 2018/05/25 10:30:22 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/asm.h"
+#include "libft.h"
 
-void	exit_str(char *str)
+void	ft_putendl(const char *s)
 {
-	ft_putstr(str);
-	exit (0);
-}
-
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
+	ft_putstr((char*)s);
 	ft_putchar('\n');
-	exit (0);
 }

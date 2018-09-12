@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/11 19:04:04 by marvin           ###   ########.fr       */
+/*   Created: 2018/06/01 14:36:03 by swilson           #+#    #+#             */
+/*   Updated: 2018/06/04 09:01:44 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/asm.h"
+#include "libft.h"
 
-void	exit_str(char *str)
+void	ft_lstadd(t_list **node, t_list *newnode)
 {
-	ft_putstr(str);
-	exit (0);
-}
-
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	if (*node || newnode)
+	{
+		newnode->next = *node;
+		*node = newnode;
+	}
+	return ;
 }

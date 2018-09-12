@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/11 19:04:04 by marvin           ###   ########.fr       */
+/*   Created: 2018/05/22 08:30:31 by swilson           #+#    #+#             */
+/*   Updated: 2018/06/01 10:24:55 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/asm.h"
-
-void	exit_str(char *str)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	ft_putstr(str);
-	exit (0);
-}
+	int i;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	if (!(s) || !(*f))
+		return ;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		(*f)(&s[i]);
+		i++;
+	}
 }

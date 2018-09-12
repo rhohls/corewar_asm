@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/11 19:04:04 by marvin           ###   ########.fr       */
+/*   Created: 2018/05/22 14:05:17 by swilson           #+#    #+#             */
+/*   Updated: 2018/05/24 14:17:39 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/asm.h"
-
-void	exit_str(char *str)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	ft_putstr(str);
-	exit (0);
-}
+	int i;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while (s1[i] == s2[i])
+	{
+		if ((s1[i] == '\0') && (s2[i] == '\0'))
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -3,74 +3,55 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/07/17 13:08:28 by rhohls            #+#    #+#              #
-#    Updated: 2018/09/05 12:35:31 by rhohls           ###   ########.fr        #
+#    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
+#    Updated: 2018/09/11 19:24:12 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ASSEMBLER = asm
-TEST ?= test.c
-
-# Path
 SRC_PATH = ./src/
-OBJ_PATH = ./objs/
-INC_PATH = ./includes/
+OBJ_PATH = ./obj/
+HDR_PATH = ./include/
+INC_PATH = $(HDR_PATH) ./libft/
 LIB_PATH = ./libft/
+LIB_NAME = ./libft/libft.a
 
-# Files
-SRC_FILE =	error.c	\
-			op.c	\
-			read_file.c	\
-	
+NAME = asm
+HEADER = include/asm.h
+SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c
+OBJ_NAME = $(SRC_NAME:.c=.o)
 
-OBJ_FILE = $(SRC_FILE:%.c=%.o)
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+LIB = $(addprefix -L,$(LIB_PATH))
 
-SRC = $(addprefix $(SRC_PATH), $(SRC_FILE))
-OBJ = $(addprefix $(OBJ_PATH), $(OBJ_FILE))
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-ASSEMBLER_MAIN = ./src_asm/main.c
+all: $(NAME)
 
-#Compile
-CCFLAGS = -Wall -Werror -Wextra
-CC = gcc #$(CCFLAGS)
+$(NAME): $(OBJ)
+	@make -C ./libft/
+	$(CC) $(LIB) $(LIB_NAME) $^ -o $@
 
-LIBF = $(LIB_PATH)libft.a
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE)
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
-#Make Commands
-all: $(ASSEMBLER)
+norm:
+	norminette $(wordlist 1, 10, $(SRC))
+	norminette $(wordlist 1, 2, $(HDR_PATH))
+	make -C ./libft/ norm
 
-$(ASSEMBLER): $(OBJ) $(ASSEMBLER_MAIN)
-	@make -C $(LIB_PATH)
-	@$(CC) -o $@ $(LIBF) $(OBJ) $(ASSEMBLER_MAIN)
-	@echo "\x1b[32m"Finished making $@"\x1b[0m"
+clean:
+	@make -C ./libft/ fclean
+	@rm -rf $(OBJ) $(OBJ_PATH)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH)
-	@$(CC) -I$(INC_PATH) -o $@ -c $<
-	@echo Making "\x1b[35m"$@"\x1b[0m"
+fclean: clean
+	rm -f $(NAME)
 
-test: $(OBJ) $(TEST)
-	@make -C./libft/
-	@$(CC) -o $@ $(OBJ) $(TEST) $(LIBF)
+re: fclean all
 
-clean: 
-	@/bin/rm -rf $(OBJ)
-	@echo "\x1b[31m"Removed all $(ASSEMBLER) objects"\x1b[0m"
-
-fclean: clean 
-	@rm -f $(ASSEMBLER)
-	@echo "\x1b[31m"Removed $(ASSEMBLER)"\x1b[0m"
-	
-cleanall: fclean fcleanlib
-
-cleanlib:
-	@make clean -C $(LIB_PATH)
-
-fcleanlib:
-	@make fclean -C $(LIB_PATH)
-
-re : cleanall all
-
-.PHONY: re fclean clean all
+.PHONY: norm clean fclean re
