@@ -18,6 +18,10 @@ int main(int argc, char *argv[])
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
 		print_list(asm_main->o_list);
 		parse_list(&asm_main);
+		printf("\nnew lists\n");
+		print_list(asm_main->n_commands);
+		printf("\nnew label list\n");
+		print_list(asm_main->n_labels);
 	}
 	else
 		error_(0, "usage: need to pass a '.s' file as an argument");

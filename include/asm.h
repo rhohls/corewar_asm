@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/12 12:09:00 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/12 14:33:09 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int						is_label(char *line, int *valid);
 int						is_comment(char *line, int *valid);
 int						is_command(char *line, int *valid);
 int						parse_list(t_asm **asm_main);
-int						what_is_it(char *line, int *valid);
+int						line_type(char *line, int *valid);
 int						balancing_quotations(char *line);
 void					print_list(t_asm_list *list);
 void					save_commands(char *str, t_asm **asm_main, int *valid);

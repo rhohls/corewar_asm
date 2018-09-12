@@ -12,19 +12,22 @@ int	parse_list(t_asm **asm_main)
 
 	while (temp)
 	{
-		if ((test = what_is_it(temp->data, &valid)) == 0)
+		if ((test = line_type(temp->data, &valid)) == 0)
 			error_(temp->location, "invalid input on line : ");
 		if (valid == 3)
 			save_label(temp->data, asm_main, &valid);
-		if (valid < 0)
+		else if (valid < 0)
 			save_commands(temp->data, asm_main, &valid);
 		temp = temp->next;
 	//what is it function will return a number based on what the line is
 	}
+	printf("nlist add %p\n", (*asm_main)->n_commands);
+		print_list((*asm_main)->n_commands);
+		print_list((*asm_main)->n_labels);
 	return (1);
 }
 
-int	what_is_it(char *line, int *valid)
+int	line_type(char *line, int *valid)
 {
 	if (is_name(line, valid))
 		return (1);
