@@ -7,7 +7,7 @@
 ** Then saves only commands(no labels) to a list
 */
 
-void	save_commands(char *str, t_asm **asm_main, int *valid)
+void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 {
 	// t_asm_list *new;
 	t_asm_list *temp;
@@ -25,22 +25,23 @@ void	save_commands(char *str, t_asm **asm_main, int *valid)
 		i++;
 	line = ft_strsub(str, i, loc_hash);
 
-	temp = new_node(line, 000);
+	temp = new_node(line, loc);
 
 	add_node_front(&((*asm_main)->n_commands), temp);
-
 }
 
-void	save_label(char *str, t_asm **asm_main, int *valid)
+void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 {
 	t_asm_list *temp;
 	char *line;
 	int loc_colon;
 	int j;
+	int len;
 	//double check what you are returning
 
 	loc_colon = len_to_char(str, LABEL_CHAR);
 	j = 0;
+	len = 0;
 	while (is_white_space(str[j]))
 		j++;
 	line = ft_strsub(str, j, loc_colon);
@@ -50,7 +51,11 @@ void	save_label(char *str, t_asm **asm_main, int *valid)
 	line_type(str + loc_colon, valid);
 	printf("valid =  %d\n", *valid);
 	if (*valid < 0)
-		save_commands(str + loc_colon, asm_main, valid);
-	temp = new_node(line, 000);
+	{
+		j = (*(g_func_ptr[(*valid * -1)]))(line);
+		len += (j > 0) ? j : 0; // error_ if its zero
+		save_commands(str + loc_colon, asm_main, valid, len);
+	}
+	temp = new_node(line, loc);
 	add_node_front(&((*asm_main)->n_labels), temp);
 }

@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/12 14:33:09 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/17 15:37:18 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
+# define LINE_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789 ,%:-"
+
 
 typedef struct			s_asm_list
 {
@@ -46,17 +48,16 @@ int						is_name(char *line, int *valid);
 int						is_label(char *line, int *valid);
 int						is_comment(char *line, int *valid);
 int						is_command(char *line, int *valid);
-int						parse_list(t_asm **asm_main);
+int						parse_list(t_asm **asm_main, int len);
 int						line_type(char *line, int *valid);
 int						balancing_quotations(char *line);
 void					print_list(t_asm_list *list);
-void					save_commands(char *str, t_asm **asm_main, int *valid);
-void					save_label(char *str, t_asm **asm_main, int *valid);
+void					save_commands(char *str, t_asm **asm_main, int *valid, int loc);
+void					save_label(char *str, t_asm **asm_main, int *valid, int n);
 int						len_to_char(char *s, int c);
 int						is_white_space(char c);
 int						is_blank(char *line, int *valid);
 int						comments(char *line, int *valid);
-
 /*
 ** Functions
 */
@@ -79,4 +80,10 @@ int		cw_lldi(char *str);
 int		cw_lfork(char *str);
 int		cw_aff(char *str);
 
+static int (*g_func_ptr[17])(char *str) =
+{// return int = amnt of jumps needed by pc ??/
+    cw_null, cw_live, cw_ld, cw_st, cw_add, cw_sub, cw_and, cw_or,
+    cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,
+    cw_lfork, cw_aff
+};
 #endif

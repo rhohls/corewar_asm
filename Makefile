@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
-#    Updated: 2018/09/11 19:24:12 by marvin           ###   ########.fr        #
+#    Updated: 2018/09/13 04:22:15 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LIB_NAME = ./libft/libft.a
 
 NAME = asm
 HEADER = include/asm.h
-SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c
+SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c\
+			test_files.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

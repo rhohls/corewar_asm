@@ -1,29 +1,30 @@
 #include "../include/asm.h"
 #include <stdlib.h>
 
-int	parse_list(t_asm **asm_main)
+int	parse_list(t_asm **asm_main, int len)
 {
 	int			valid;
 	t_asm_list	*temp;
-	int test;
+	int			test;
+	int			hold;
 
 	valid = 0;
 	temp = (*asm_main)->o_list;
-
+	len = 0;
 	while (temp)
 	{
 		if ((test = line_type(temp->data, &valid)) == 0)
 			error_(temp->location, "invalid input on line : ");
 		if (valid == 3)
-			save_label(temp->data, asm_main, &valid);
+			save_label(temp->data, asm_main, &valid, temp->location);
 		else if (valid < 0)
-			save_commands(temp->data, asm_main, &valid);
+		{
+			hold = (*(g_func_ptr[(valid * -1)]))(temp->data);
+			len += (hold > 0) ? hold : 0; // error_ if its zero
+			save_commands(temp->data, asm_main, &valid, len);
+		}
 		temp = temp->next;
-	//what is it function will return a number based on what the line is
 	}
-	printf("nlist add %p\n", (*asm_main)->n_commands);
-		print_list((*asm_main)->n_commands);
-		print_list((*asm_main)->n_labels);
 	return (1);
 }
 
