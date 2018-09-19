@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/17 09:44:42 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 08:03:55 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ int	check_register(char *str)
 {
 	int nbr;
 
-	if (str[i] == 'r')
+	if (str[0] == 'r')
 	{
-		nbr = ft_atoi(s + 1);
+		nbr = ft_atoi(str + 1);
 		if ((nbr > 0) && (nbr < 17))
 			return (1);
-	return (0)
+	}
+	return (0);
 }
 
 int	check_indirect(char *str)
 {
 	if (!is_valid_nbr(str))
 		return (0);
-	return (1)
+	return (1);
 }
 
 char	*copy_till_space(char *str)
@@ -75,7 +76,7 @@ int	is_valid_label(char *str, t_asm_list *labels)
 	{
 		if (ft_strnequ(label, temp->data, ft_strlen(label))) //is the size corect?
 			ret = 1;
-		tmep = temp->next;
+		temp = temp->next;
 	}
 	if (label != NULL)
 		free(label);
@@ -92,21 +93,21 @@ int	check_direct(char *str, t_asm_list *labels)
 	else if ((str[0] == '%') && (ft_isdigit(str[1])))
 		if (is_valid_nbr(str + 1))
 			return (1);
-	return (0)
+	return (0);
 }
 
-int	check_r_d_i(char str, t_asm_list *lables)
+int	check_r_d_i(char *str, t_asm_list *labels)
 {
 	if (check_register(str))
 		return (1);
 	if (check_direct(str, labels))
 		return (2);
-	if (check_indirect(char *str))
+	if (check_indirect(str))
 		return (3);
 	return (0);
 }
 
-int	check_r_d(char *str)
+int	check_r_d(char *str, t_asm_list *labels)
 {
 	if (check_register(str))
 		return (1);
@@ -119,12 +120,12 @@ int	check_d_i(char *str, t_asm_list *labels)
 {
 	if (check_direct(str, labels))
 		return (1);
-	if (check_indirect(char *str))
+	if (check_indirect(str))
 		return (2);
 	return (0);
 }
 
-int	cw_sti(char *str, int loc)
+int	cw_sti(char *str, int loc, t_asm_list *labels)
 {
 	int i;
 	int j;
@@ -138,16 +139,16 @@ int	cw_sti(char *str, int loc)
 		ret += 1;
 		i = (str[6] == ',') ? 7 : 8;
 		i = (str[i] == ' ') ? ++i : i;
-		if ((hold = check_r_d_i(str + i)) > 0)
+		if ((hold = check_r_d_i(str + i, labels)) > 0)
 		{
 			j = len_to_char(str + i, ' ');
 			i += j;
 			i++;
 			if (hold == 1)
 				ret += 1;
-			else if ((hold == 2) || hold = 3))
+			else if ((hold == 2) || (hold == 3))
 				ret += 2;
-			if ((hold = check_r_d(str + i)) > 0)
+			if ((hold = check_r_d(str + i, labels)) > 0)
 					return (ret + hold);
 		}
 	}

@@ -1,4 +1,4 @@
-#include "../include/asm.h"
+#include "../includes/asm.h"
 #include <stdlib.h>
 
 void	print_list(t_asm_list *list)

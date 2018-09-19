@@ -1,4 +1,4 @@
-#include "../include/asm.h"
+#include "../includes/asm.h"
 #include <stdlib.h>
 
 /*
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 		initialize(&asm_main);
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
 		print_list(asm_main->o_list);
-		parse_list(&asm_main);
+		parse_list(&asm_main, 0);
 		printf("\nnew lists\n");
 		print_list(asm_main->n_commands);
 		printf("\nnew label list\n");

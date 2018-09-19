@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/17 15:37:18 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/18 09:43:49 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,38 @@ int						len_to_char(char *s, int c);
 int						is_white_space(char c);
 int						is_blank(char *line, int *valid);
 int						comments(char *line, int *valid);
+int	is_valid_nbr(char *s);
+int	check_register(char *str);
+int	check_indirect(char *str);
+char	*copy_till_space(char *str);
+int	is_valid_label(char *str, t_asm_list *labels);
+int	check_direct(char *str, t_asm_list *labels);
+int	check_r_d_i(char *str, t_asm_list *labels);
+int	check_r_d(char *str, t_asm_list *labels);
+int	check_d_i(char *str, t_asm_list *labels);
 /*
 ** Functions
 */
 
-int		cw_null(char *str);
-int		cw_live(char *str);
-int		cw_ld(char *str);
-int		cw_st(char *str);
-int		cw_add(char *str);
-int		cw_sub(char *str);
-int		cw_and(char *str);
-int		cw_or(char *str);
-int		cw_xor(char *str);
-int		cw_zjmp(char *str);
-int		cw_ldi(char *str);
-int		cw_sti(char *str);
-int		cw_fork(char *str);
-int		cw_lld(char *str);
-int		cw_lldi(char *str);
-int		cw_lfork(char *str);
-int		cw_aff(char *str);
+int		cw_null(char *str, int loc, t_asm_list *labels);
+int		cw_live(char *str, int loc, t_asm_list *labels);
+int		cw_ld(char *str, int loc, t_asm_list *labels);
+int		cw_st(char *str, int loc, t_asm_list *labels);
+int		cw_add(char *str, int loc, t_asm_list *labels);
+int		cw_sub(char *str, int loc, t_asm_list *labels);
+int		cw_and(char *str, int loc, t_asm_list *labels);
+int		cw_or(char *str, int loc, t_asm_list *labels);
+int		cw_xor(char *str, int loc, t_asm_list *labels);
+int		cw_zjmp(char *str, int loc, t_asm_list *labels);
+int		cw_ldi(char *str, int loc, t_asm_list *labels);
+int		cw_sti(char *str, int loc, t_asm_list *labels);
+int		cw_fork(char *str, int loc, t_asm_list *labels);
+int		cw_lld(char *str, int loc, t_asm_list *labels);
+int		cw_lldi(char *str, int loc, t_asm_list *labels);
+int		cw_lfork(char *str, int loc, t_asm_list *labels);
+int		cw_aff(char *str, int loc, t_asm_list *labels);
 
-static int (*g_func_ptr[17])(char *str) =
+static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 {// return int = amnt of jumps needed by pc ??/
     cw_null, cw_live, cw_ld, cw_st, cw_add, cw_sub, cw_and, cw_or,
     cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,

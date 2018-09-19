@@ -1,4 +1,4 @@
-#include "../include/asm.h"
+#include "../includes/asm.h"
 #include <stdlib.h>
 
 int	is_name(char *line, int *valid)
