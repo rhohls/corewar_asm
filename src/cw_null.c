@@ -6,13 +6,16 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:45:30 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 09:40:34 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void	cw_null(char *str)
+int	cw_null(char *str, int loc, t_asm_list *labels)
 {
-	
+	str++;
+	loc ++;
+	labels->location = 0;
+	return (0);
 }

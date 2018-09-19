@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/19 08:27:54 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 09:46:07 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	cw_fork(char *str, int loc, t_asm_list *labels)
 	int ret;
 
 	i = 4;
-	ret = 2;
+	ret = 1;
 	if (check_direct(str + i, labels))
-		return (ret + 1);
+		return (ret + 2);
 	error_(loc, "check the format on line : ");
 	return (0);
 }

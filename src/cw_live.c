@@ -6,42 +6,26 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:45:30 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 09:48:27 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-t_player *get_player(t_vm *vm, int player_num)
-{
-	t_player	*player;
-	t_list		*node;
-	
-	node = vm->player_list->start;
-	while (node)
-	{
-		player = node->content;
-		if (player->player_num == player_num)
-			return (player);
-		node = node->next;
-	}
-	return (NULL);
-}
+/* cw_live:N
+		D		5
 
+{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0} */
 
-static void apply_life(t_vm *vm, int player_num)
+int	cw_live(char *str, int loc, t_asm_list *labels)
 {
-	t_player	*player;
-	player = get_player(vm, player_num);
-	if (player)
-		player->nbr_lives++;
-}
+	int i;
+	int ret;
 
-void	cw_live(char *str)
-{
-	int player_num;
-	
-	player_num = get_int(&(vm->mem_board[cursor->pc + 2]));
-	apply_life(vm, player_num);	
-	cursor->pc += 5;
+	i = 4;
+	ret = 1;
+	if (check_direct(str + i, labels))
+		return (ret + 4);
+	error_(loc, "check the format on line : ");
+	return (0);
 }

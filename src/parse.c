@@ -19,7 +19,7 @@ int	parse_list(t_asm **asm_main, int len)
 			save_label(temp->data, asm_main, &valid, temp->location);
 		else if (valid < 0)
 		{
-			hold = (*(g_func_ptr[(valid * -1)]))(temp->data);
+			hold = (*(g_func_ptr[(valid * -1)]))(temp->data, temp->location, (*asm_main)->n_labels);
 			len += (hold > 0) ? hold : 0; // error_ if its zero
 			save_commands(temp->data, asm_main, &valid, len);
 		}

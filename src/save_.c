@@ -52,7 +52,7 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	printf("valid =  %d\n", *valid);
 	if (*valid < 0)
 	{
-		j = (*(g_func_ptr[(*valid * -1)]))(line);
+		j = (*(g_func_ptr[(*valid * -1)]))(line, loc, (*asm_main)->n_labels);
 		len += (j > 0) ? j : 0; // error_ if its zero
 		save_commands(str + loc_colon, asm_main, valid, len);
 	}

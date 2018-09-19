@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/18 09:43:49 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 08:55:33 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		cw_lld(char *str, int loc, t_asm_list *labels);
 int		cw_lldi(char *str, int loc, t_asm_list *labels);
 int		cw_lfork(char *str, int loc, t_asm_list *labels);
 int		cw_aff(char *str, int loc, t_asm_list *labels);
+void	adjust_ret(int *ret, int j, int *i, int hold, char *str);
 
 static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 {// return int = amnt of jumps needed by pc ??/
