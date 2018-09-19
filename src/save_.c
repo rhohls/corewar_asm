@@ -50,12 +50,9 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 		loc_colon++;
 	line_type(str + loc_colon, valid);
 	printf("valid =  %d\n", *valid);
+	printf("valid in save label = %d loc = %d\n", *valid, loc_colon);
 	if (*valid < 0)
-	{
-		j = (*(g_func_ptr[(*valid * -1)]))(line, loc, (*asm_main)->n_labels);
-		len += (j > 0) ? j : 0; // error_ if its zero
-		save_commands(str + loc_colon, asm_main, valid, len);
-	}
+		save_commands(str + loc_colon, asm_main, valid, loc);
 	temp = new_node(line, loc);
 	add_node_front(&((*asm_main)->n_labels), temp);
 }

@@ -1,7 +1,5 @@
 .name "zork"
 .comment "I'M ALII \"IIVE "
-
-
 l2:		sti r1, %:live, %2  #I am a comment
 		and r1, %0, r1
 #I am also a comment

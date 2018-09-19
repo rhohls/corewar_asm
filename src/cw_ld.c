@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/19 08:27:18 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/19 11:47:55 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	cw_ld(char *str, int loc, t_asm_list *labels)
 
 	i = 3;
 	ret = 2;
+	printf("string = %s\n string + i = %s\n", str, str + i);
 	if ((hold = check_d_i(str + i, labels)) > 0)
 	{
+		ft_putstr("got in");
 		if (hold == 1)
 			ret += 4;
 		else

@@ -24,7 +24,7 @@ start:
 
 lspawn:
 		live %0
-		fork %:write
+		#fork %:write
 		add r3, r6, r3
 		ld %0, r7
 		zjmp %:lspawn

@@ -1,12 +1,59 @@
 #include "../includes/asm.h"
 #include <stdlib.h>
 
+t_asm_list	*sanitised_command(int loc, t_asm_list *list)
+{
+	t_asm_list *commands;
+
+	commands = list;
+	printf("searching for the right command\n");
+	while (commands)
+	{
+		printf("loc %d vs %d location\n", loc, commands->location);
+		if (commands->location == loc)
+			return (commands);
+		commands = commands->next;
+	}
+	return (NULL);
+}
+
+void	save_locations(t_asm **asm_main)
+{
+	t_asm_list	*temp;
+	t_asm_list	*command;
+	t_asm_list	*labels;
+	int			size;
+	int			valid;
+
+	temp = (*asm_main)->o_list;
+	labels = (*asm_main)->n_labels;
+	while (temp)
+	{
+
+		line_type(temp->data, &valid);
+		if (valid < 0)
+		{
+		printf("------>%s\t", temp->data);
+			command = sanitised_command(temp->location, (*asm_main)->n_commands); //return a sanitized version of the node u are on
+			if (command != NULL)
+			{
+				printf("command not NULL\n");
+				//replace command->location with the size of bytes
+				size = (*(g_func_ptr[(valid * -1)]))(command->data, command->location, (*asm_main)->n_labels);
+				if (size)
+					command->location = size;
+				printf("%d\n", size);
+			}
+		}
+		temp = temp->next;
+	}
+}
+
 int	parse_list(t_asm **asm_main, int len)
 {
 	int			valid;
 	t_asm_list	*temp;
 	int			test;
-	int			hold;
 
 	valid = 0;
 	temp = (*asm_main)->o_list;
@@ -18,13 +65,10 @@ int	parse_list(t_asm **asm_main, int len)
 		if (valid == 3)
 			save_label(temp->data, asm_main, &valid, temp->location);
 		else if (valid < 0)
-		{
-			hold = (*(g_func_ptr[(valid * -1)]))(temp->data, temp->location, (*asm_main)->n_labels);
-			len += (hold > 0) ? hold : 0; // error_ if its zero
-			save_commands(temp->data, asm_main, &valid, len);
-		}
+			save_commands(temp->data, asm_main, &valid, temp->location);
 		temp = temp->next;
 	}
+	save_locations(asm_main);
 	return (1);
 }
 
