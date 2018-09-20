@@ -34,6 +34,8 @@ void	save_locations(t_asm **asm_main)
 			command = sanitised_command(temp->location, (*asm_main)->n_commands);
 			if (command != NULL)
 			{
+				printf("~~input string |%s| \n",command->data );
+				printf("calling function number: %d~~\n", valid * -1);
 				size = (*(g_func_ptr[(valid * -1)]))(command->data, command->location, (*asm_main)->n_labels);
 				if (size)
 					command->location = size;

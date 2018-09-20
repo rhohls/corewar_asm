@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/20 09:06:45 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/20 13:06:24 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int						len_to_char(char *s, int c);
 int						is_white_space(char c);
 int						is_blank(char *line, int *valid);
 int						comments(char *line, int *valid);
-int	is_valid_nbr(char *s);
-int	check_register(char *str);
-int	check_indirect(char *str);
-char	*copy_till_space(char *str);
-int	is_valid_label(char *str, t_asm_list *labels);
-int	check_direct(char *str, t_asm_list *labels);
-int	check_r_d_i(char *str, t_asm_list *labels);
-int	check_r_d(char *str, t_asm_list *labels);
-int	check_r_i(char *str);
-int	check_d_i(char *str, t_asm_list *labels);
+int						is_valid_nbr(char *s, int sign);
+int						check_register(char *str);
+int						check_indirect(char *str);
+char					*copy_till_space(char *str);
+int						is_valid_label(char *str, t_asm_list *labels);
+int						check_direct(char *str, t_asm_list *labels);
+int						check_r_d_i(char *str, t_asm_list *labels);
+int						check_r_d(char *str, t_asm_list *labels);
+int						check_r_i(char *str);
+int						check_d_i(char *str, t_asm_list *labels);
 /*
 ** Functions
 */

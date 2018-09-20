@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/20 10:24:24 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/20 13:23:17 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	cw_st(char *str, int loc, t_asm_list *labels)
 		if ((hold = check_r_i(str + i)) > 0)
 					return (ret + hold);
 	}
+	printf("ret form reg %d: \n",check_register(str + 3) );
 	error_(loc, "check the format on line : ");
 	return (0);
 }

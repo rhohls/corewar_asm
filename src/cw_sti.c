@@ -6,20 +6,20 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/20 10:26:23 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/20 15:25:30 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-int	is_valid_nbr(char *s)
+int	is_valid_nbr(char *s, int sign)
 {
 	int		nbr;
 	int		j;
 	char	*number;
 	char	*line;
 
-	j = 0;
+	j = sign;
 	while (ft_isdigit(s[j]))
 		j++;
 	line = ft_strsub(s, 0, j);
@@ -34,18 +34,26 @@ int	check_register(char *str)
 {
 	int nbr;
 
+	nbr = -123123;
 	if (str[0] == 'r')
 	{
 		nbr = ft_atoi(str + 1);
 		if ((nbr > 0) && (nbr < 17))
 			return (1);
 	}
+	printf("str: %s - str[0] |%c|   -   nbr %d\n", str, str[0], nbr);
 	return (0);
 }
 
 int	check_indirect(char *str)
 {
-	if (!is_valid_nbr(str))
+	int i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+printf("check indirect str = |%s| i = %d\n", str, i);
+	if (!is_valid_nbr(str, i))
 		return (0);
 	return (1);
 }
@@ -57,17 +65,21 @@ char	*copy_till_space(char *str)
 	int		len;
 
 	i = 0;
-	len = len_to_char(str, ' ');
+	len = 0;
+	while (ft_strchr(LABEL_CHARS, str[len]))
+		len++;
+	printf("len = %d\n", len);
 	ret = NULL;
 	if (str[len] == ',')
 		len--;
 	if (!(ret = (char *)ft_memalloc(len + 1)))
 		return (NULL);
-	while ((str[i] != ' ') && str[i] && (str[i] != ','))
+	while ((str[i] != ' ') && str[i] && (str[i] != ',') && (str[i] != '\t'))
 	{
 		ret[i] = str[i];
 		i++;
 	}
+	ret[i] = '\0';
 	return (ret);
 }
 
@@ -78,12 +90,22 @@ int	is_valid_label(char *str, t_asm_list *labels)
 	int			ret;
 
 	label = copy_till_space(str);
+	ft_putendl("after copy till space");
 	temp = labels;
 	ret = 0;
+	ft_putstr("before sev\n");
+	ft_putstr(label);
+	ft_putstr("before sev\n");
 	while (temp)
 	{
+		ft_putstr(label);
+		ft_putstr(" vs ");
+		ft_putstr(temp->data);
+		ft_putchar('\n');
+		printf("label len =%lu\n", ft_strlen(label));
 		if (ft_strnequ(label, temp->data, ft_strlen(label)))
 			ret = 1;
+		printf("returning %d\n", ret);
 		temp = temp->next;
 	}
 	if (label != NULL)
@@ -94,14 +116,21 @@ int	is_valid_label(char *str, t_asm_list *labels)
 
 int	check_direct(char *str, t_asm_list *labels)
 {
+	int sign;
+
+	ft_putendl("checking direct");
+	ft_putendl(str);
+	sign = 0;
 	if ((str[0] == '%') && (str[1] == LABEL_CHAR))
 	{
 		if (is_valid_label(str + 2, labels))
 			return (1);
 	}
-	else if ((str[0] == '%') && (ft_isdigit(str[1])))
+	else if ((str[0] == '%') && (ft_isdigit(str[1]) || str[1] == '-'))
 	{
-		if (is_valid_nbr(str + 1))
+		if (str[1] == '-')
+			sign++;
+		if (is_valid_nbr(str + 1, sign))
 			return (1);
 	}
 	return (0);
