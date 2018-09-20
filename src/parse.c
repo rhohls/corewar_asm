@@ -6,10 +6,8 @@ t_asm_list	*sanitised_command(int loc, t_asm_list *list)
 	t_asm_list *commands;
 
 	commands = list;
-	printf("searching for the right command\n");
 	while (commands)
 	{
-		printf("loc %d vs %d location\n", loc, commands->location);
 		if (commands->location == loc)
 			return (commands);
 		commands = commands->next;
@@ -33,16 +31,12 @@ void	save_locations(t_asm **asm_main)
 		line_type(temp->data, &valid);
 		if (valid < 0)
 		{
-		printf("------>%s\t", temp->data);
-			command = sanitised_command(temp->location, (*asm_main)->n_commands); //return a sanitized version of the node u are on
+			command = sanitised_command(temp->location, (*asm_main)->n_commands);
 			if (command != NULL)
 			{
-				printf("command not NULL\n");
-				//replace command->location with the size of bytes
 				size = (*(g_func_ptr[(valid * -1)]))(command->data, command->location, (*asm_main)->n_labels);
 				if (size)
 					command->location = size;
-				printf("%d\n", size);
 			}
 		}
 		temp = temp->next;

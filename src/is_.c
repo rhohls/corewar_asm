@@ -83,11 +83,12 @@ int	is_command(char *line, int *valid)
 
 	commands = init_commands();
 	j = 0;
-	i = -1;
+	i = 0;
 	flag = -1;
 	while (is_white_space(line[j]))
 		j++;
-	while (++i < 16)
+
+	while (++i <= 16)
 	{
 		if (ft_strnequ(line + j, commands[i], ft_strlen(commands[i])))
 			flag = i;

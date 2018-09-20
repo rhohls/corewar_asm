@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/19 10:40:39 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/20 09:22:56 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cw_sub(char *str, int loc, t_asm_list *labels)
 	int i;
 	int ret;
 
-	i = 2;
+	i = 4;
 	ret = 2;
 	(void)labels;
 	if (check_register(str + i))

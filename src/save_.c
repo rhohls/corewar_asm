@@ -9,7 +9,6 @@
 
 void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 {
-	// t_asm_list *new;
 	t_asm_list *temp;
 	char *line;
 	int i;
@@ -18,7 +17,7 @@ void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 	i = 0;
 	loc_hash = len_to_char(str, '#');
 	if (loc_hash == -1)
-		loc_hash = len_to_char(str, '\0'); // till # or '\0'
+		loc_hash = len_to_char(str, '\0');
 	(*valid)++;
 
 	while (is_white_space(str[i]))
@@ -49,8 +48,6 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	while (is_white_space(str[loc_colon]))
 		loc_colon++;
 	line_type(str + loc_colon, valid);
-	printf("valid =  %d\n", *valid);
-	printf("valid in save label = %d loc = %d\n", *valid, loc_colon);
 	if (*valid < 0)
 		save_commands(str + loc_colon, asm_main, valid, loc);
 	temp = new_node(line, loc);

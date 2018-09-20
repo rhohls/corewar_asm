@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/19 10:45:16 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/20 08:34:56 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	cw_xor(char *str, int loc, t_asm_list *labels)
 	int ret;
 	int hold;
 
-	i = 2;
+	i = 4;
 	ret = 2;
 	(void)labels;
 	if ((hold = check_r_d_i(str + i, labels)) > 0)
@@ -44,13 +44,8 @@ int	cw_xor(char *str, int loc, t_asm_list *labels)
 			adjust_ret(&ret, 0, &i, hold, str);
 			if (hold == 2)
 				ret += 2;
-			if ((hold = check_r_d_i(str + i, labels)) > 0)
-			{
-				adjust_ret(&ret, 0, &i, hold, str);
-				if (hold == 2)
-					ret += 2;
-				return (ret);
-			}
+			if (check_register(str + i))
+				return (ret + 1);
 		}
 	}
 	error_(loc, "check the format on line : ");

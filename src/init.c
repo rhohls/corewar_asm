@@ -20,7 +20,7 @@ char	**init_commands(void)
 	char	**ret;
 
 	ret = (char **)malloc(sizeof(char*) *17);
-	ret[0] = "live";
+	ret[0] = NULL;
 	ret[1] = "ld";
 	ret[2] = "st";
 	ret[3] = "add";
@@ -31,12 +31,12 @@ char	**init_commands(void)
 	ret[8] = "zjmp";
 	ret[9] = "ldi";
 	ret[10] = "sti";
-	ret[11] = "folk";
+	ret[11] = "fork";
 	ret[12] = "lld";
 	ret[13] = "lldi";
 	ret[14] = "lfork";
 	ret[15] = "aff";
-	ret[16] = NULL;
+	ret[16] = "live";
 	return (ret);
 }
 
