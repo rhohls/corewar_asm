@@ -65,13 +65,13 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct		header_s
+typedef struct		s_header
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
-}					header_t;
+  unsigned int		magic; //4 byte  @ ind 0								0
+  char				prog_name[PROG_NAME_LENGTH + 1];//129    @ ind 4		4
+  unsigned int		prog_size; //4 bytes   @ ind 133 (136)					136
+  char				comment[COMMENT_LENGTH + 1]; //2049 @ ind 137 (140)		140
+}					t_header; // prgram ind start = 2186 (2192)  -6			2192
 
 typedef struct		s_op
 {

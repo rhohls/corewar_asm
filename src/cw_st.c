@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   cw_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/20 10:24:24 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void	exit_str(char *str)
+int	cw_st(char *str, int loc, t_asm_list *labels)
 {
-	ft_putstr(str);
-	exit (0);
-}
+	int i;
+	int ret;
+	int hold;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	i = 3;
+	ret = 2;
+	(void)labels;
+	if (check_register(str + i))
+	{
+		ret += 1;
+		i += len_to_char(str + i, ',');
+		i = (str[i + 1] == ' ') ? i + 2 : i + 1;
+		if ((hold = check_r_i(str + i)) > 0)
+					return (ret + hold);
+	}
+	error_(loc, "check the format on line : ");
+	return (0);
 }

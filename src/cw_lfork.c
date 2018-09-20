@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   cw_lfork.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
+/*   Updated: 2018/09/20 10:23:57 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void	exit_str(char *str)
+int	cw_lfork(char *str, int loc, t_asm_list *labels)
 {
-	ft_putstr(str);
-	exit (0);
-}
+	int i;
+	int ret;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	i = 6;
+	ret = 1;
+	if (check_direct(str + i, labels))
+		return (ret + 2);
+	error_(loc, "check the format on line : ");
+	return (0);
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/06/04 09:02:40 by swilson           #+#    #+#             */
+/*   Updated: 2018/06/04 09:34:06 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm.h"
+#include "libft.h"
 
-void	exit_str(char *str)
+void	ft_lstiter(t_list *node, void (*f)(t_list *elem))
 {
-	ft_putstr(str);
-	exit (0);
-}
-
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	if (node || f)
+	{
+		while (node)
+		{
+			f(node);
+			node = node->next;
+		}
+	}
+	return ;
 }

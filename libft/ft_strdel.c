@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/05/22 07:49:56 by swilson           #+#    #+#             */
+/*   Updated: 2018/05/24 10:31:40 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm.h"
+#include <stdlib.h>
 
-void	exit_str(char *str)
+void	ft_strdel(char **as)
 {
-	ft_putstr(str);
-	exit (0);
-}
-
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	if (!(as))
+		return ;
+	free(*as);
+	*as = (NULL);
 }

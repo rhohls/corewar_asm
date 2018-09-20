@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/05/18 07:36:30 by swilson           #+#    #+#             */
+/*   Updated: 2018/05/18 08:03:21 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm.h"
+#include "libft.h"
 
-void	exit_str(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	ft_putstr(str);
-	exit (0);
-}
+	size_t	i;
+	char	*temp;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	temp = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		temp[i] = c;
+		i++;
+	}
+	return (s);
 }

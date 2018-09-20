@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: swilson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 08:43:10 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/18 08:50:10 by swilson          ###   ########.fr       */
+/*   Created: 2018/05/17 10:37:42 by swilson           #+#    #+#             */
+/*   Updated: 2018/05/24 13:17:07 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asm.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	exit_str(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	ft_putstr(str);
-	exit (0);
-}
+	int		i;
+	int		len;
 
-int		error_(int line_no, char *output)
-{
-	ft_putstr(output);
-	if (line_no)
-		ft_putnbr(line_no);
-	ft_putchar('\n');
-	exit (0);
+	i = 0;
+	len = ft_strlen(s) + 1;
+	while (len--)
+	{
+		if (s[i] == c)
+		{
+			return ((char *)s + i);
+		}
+		i++;
+	}
+	return (NULL);
 }
