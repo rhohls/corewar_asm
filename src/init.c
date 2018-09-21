@@ -19,7 +19,7 @@ char	**init_commands(void)
 {
 	char	**ret;
 
-	ret = (char **)malloc(sizeof(char*) *17);
+	ret = (char **)malloc(sizeof(char*) *18);
 	ret[0] = NULL;
 	ret[1] = "ld";
 	ret[2] = "st";
@@ -37,6 +37,7 @@ char	**init_commands(void)
 	ret[14] = "lfork";
 	ret[15] = "aff";
 	ret[16] = "live";
+	ret[17] = NULL;
 	return (ret);
 }
 
@@ -49,7 +50,9 @@ t_asm_list *new_node(char *line, int pos)
 	if (line)
 	{	node = (t_asm_list*)malloc(sizeof(t_asm_list));
 		node->data = ft_strdup(line);
-		node->location = pos;
+		node->line_no = pos;
+		node->location = 0;
+		node->size = 0;
 		node->next = NULL;
 	}
 	return (node);

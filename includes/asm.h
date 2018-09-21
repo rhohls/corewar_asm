@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/20 13:06:24 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/21 12:24:55 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct			s_asm_list
 {
 	char				*data;
 	int					location;
+	int					size;
+	int					line_no;
 	struct s_asm_list	*next;
 }						t_asm_list;
 

@@ -9,8 +9,12 @@ void	print_list(t_asm_list *list)
 	while (temp)
 	{
 		ft_putstr(temp->data);
-		ft_putstr("\t\t| ");
+		ft_putstr("\t| ");
+		ft_putnbr(temp->line_no);
+		ft_putstr("\t| ");
 		ft_putnbr(temp->location);
+		ft_putstr("\t| ");
+		ft_putnbr(temp->size);
 		ft_putstr("\n");
 		temp = temp->next;
 	}

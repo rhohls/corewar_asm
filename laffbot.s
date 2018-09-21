@@ -22,4 +22,3 @@ aff r5
 aff r6
 
 zjmp %:time_to_aff
-

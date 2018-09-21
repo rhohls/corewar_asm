@@ -16,11 +16,11 @@ int main(int argc, char *argv[])
 			error_(0, "failed to open the file");
 		initialize(&asm_main);
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
-		print_list(asm_main->o_list);
+		// print_list(asm_main->o_list);
 		parse_list(&asm_main, 0);
-		printf("\nnew lists\n");
+		printf("\n\nnew lists\n\n");
 		print_list(asm_main->n_commands);
-		printf("\nnew label list\n");
+		printf("\n\nnew label list\n\n");
 		print_list(asm_main->n_labels);
 	}
 	else
