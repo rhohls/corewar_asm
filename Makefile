@@ -41,7 +41,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE)
 	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	$(CC) $(INC) -o $@ -c $<
 
 norm:
 	norminette $(wordlist 1, 10, $(SRC))

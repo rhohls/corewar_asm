@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
 		print_list(asm_main->n_commands);
 		printf("\n\nnew label list\n\n");
 		print_list(asm_main->n_labels);
+		printf("\n\nFINAL list\n\n");
+		print_list(asm_main->final_list);
 	}
 	else
 		error_(0, "usage: need to pass a '.s' file as an argument");

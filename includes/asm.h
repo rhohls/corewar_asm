@@ -36,6 +36,7 @@ typedef struct			s_asm
 	t_asm_list			*o_list;
 	t_asm_list			*n_commands;
 	t_asm_list			*n_labels;
+	t_asm_list			*final_list;
 }						t_asm;
 
 void					exit_str(char *str);
@@ -70,6 +71,8 @@ int						check_r_d_i(char *str, t_asm_list *labels);
 int						check_r_d(char *str, t_asm_list *labels);
 int						check_r_i(char *str);
 int						check_d_i(char *str, t_asm_list *labels);
+t_asm_list				*new_final_node(char *line, t_asm_list *command);
+
 /*
 ** Functions
 */
@@ -94,7 +97,7 @@ int		cw_aff(char *str, int loc, t_asm_list *labels);
 void	adjust_ret(int *ret, int j, int *i, int hold, char *str);
 
 static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
-{// return int = amnt of jumps needed by pc ??/
+{
     cw_null, cw_ld, cw_st, cw_add, cw_sub, cw_and, cw_or,
     cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,
     cw_lfork, cw_aff, cw_live

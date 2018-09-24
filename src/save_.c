@@ -12,16 +12,12 @@ int	is_white_space_rev(char *s, int start)
 	int i;
 
 	i = 0;
-	// printf("end from s[%d] = %c\n", start, s[start]);
 	while (((s[start - i] == ' ') || (s[start - i] == '\t')) && (s[start] != '\0'))
 	{
-	// printf("end from s[%d] = %c\n", start, s[start - i]);
-
 			i++;
 			if (start - i < 0)
 				break ;
 	}
-	// i = (i > 0) ? i + 1 : i;
 	return (i);
 }
 
@@ -44,11 +40,8 @@ void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 	while (is_white_space(str[i]))
 		i++;
 	loc_hash -= i;
-	// printf("loc_hash = %d, i = %d, str = |%s| end = %d\n", loc_hash,i, str, end);
 	line = ft_strsub(str, i, loc_hash - end);
-	// printf("loc_hash = %d, i = %d, line = |%s| end = %d\n", loc_hash,i, line, end);
 	temp = new_node(line, loc);
-
 	add_node_front(&((*asm_main)->n_commands), temp);
 }
 
@@ -58,15 +51,13 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	char *line;
 	int loc_colon;
 	int j;
-	int len;
-	//double check what you are returning
 
 	loc_colon = len_to_char(str, LABEL_CHAR);
 	j = 0;
-	len = 0;
 	while (is_white_space(str[j]))
 		j++;
-	line = ft_strsub(str, j, loc_colon);
+		// printf("loc = %d, c = %c j = %d\n", loc_colon, str[loc_colon], j);
+	line = ft_strsub(str, j, (j > 0) ? loc_colon - 1 : loc_colon);// malloc line
 	loc_colon++;
 	while (is_white_space(str[loc_colon]))
 		loc_colon++;

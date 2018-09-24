@@ -3,4 +3,4 @@
 
 init:
 		sti r1, %:live0, %1		; initialize live instructions
-
+live0:

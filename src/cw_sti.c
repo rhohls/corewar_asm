@@ -68,7 +68,7 @@ char	*copy_till_space(char *str)
 	len = 0;
 	while (ft_strchr(LABEL_CHARS, str[len]))
 		len++;
-	// printf("len = %d\n", len);
+	//  printf("len = %d\n", len);
 	ret = NULL;
 	if (str[len] == ',')
 		len--;
@@ -88,13 +88,14 @@ int	is_valid_label(char *str, t_asm_list *labels)
 	t_asm_list	*temp;
 	char		*label;
 	int			ret;
-
+	// printf("str = %s vs %s\n", str, labels->data);
 	label = copy_till_space(str);
 	// ft_putendl("after copy till space");
 	temp = labels;
+	// printf("label = %s\n", label);
 	ret = 0;
 	// ft_putstr("before sev\n");
-	ft_putstr(label);
+	// ft_putstr(label);
 	// ft_putstr("before sev\n");
 	while (temp)
 	{
@@ -110,7 +111,7 @@ int	is_valid_label(char *str, t_asm_list *labels)
 	}
 	if (label != NULL)
 		free(label);
-	ft_putnbr(ret);
+	// ft_putnbr(ret);
 	return (ret);
 }
 

@@ -27,19 +27,15 @@ void	save_sizes(t_asm **asm_main)
 	labels = (*asm_main)->n_labels;
 	while (temp)
 	{
-		// printf("looking at ==> %s\n", temp->data);
 		line_type(temp->data, &valid);
 		if (valid < 0)
 		{
 			command = sanitised_command(temp->line_no, (*asm_main)->n_commands);
 			if (command != NULL)
 			{
-				// printf("~~input string |%s| line no: %d \n",command->data, command->line_no );
-				// printf("calling function number: %d~~\n", valid * -1);
 				size = (*(g_func_ptr[(valid * -1)]))(command->data, command->line_no, (*asm_main)->n_labels);
 				if (size)
 					command->size = size;
-				// printf("size ======>%d\n", size);
 			}
 		}
 		temp = temp->next;
@@ -75,16 +71,85 @@ void	set_command_loc(int line_num, int pos, t_asm_list *commands)
 
 void	save_locations(t_asm **asm_main)
 {
-	t_asm_list	*temp;
+	t_asm_list	*commands;
+	t_asm_list	*labels;
 	int			size;
 
-	temp = (*asm_main)->n_commands;
+	commands = (*asm_main)->n_commands;
+	labels = (*asm_main)->n_labels;
 	size = 0;
+	while (commands)
+	{
+		while (labels && labels->line_no <= commands->line_no)
+		{
+			set_label_loc(labels->line_no, size, labels);
+			labels = labels->next;
+		}
+		// set_label_loc(commands->line_no, size, labels);
+		set_command_loc(commands->line_no, size, commands);
+		size += commands->size;
+		commands = commands->next;
+		if (!commands && labels)
+		{
+			while (labels)
+			{
+				set_label_loc(labels->line_no, size, labels);
+				labels = labels->next;
+			}
+		}
+	}
+}
+
+char	*set_final_line(t_asm_list *node, t_asm_list *labels)
+{
+	char *ret;
+	int i;
+	size_t len;
+	char *loc;
+	t_asm_list *label;
+
+	i = 0;
+	label = labels;
+	i = len_to_char(node->data, LABEL_CHAR);
+	i = (node->data[i + 1] == ' ') ? i + 2 : i + 1;
+	while (label)
+	{
+		if (ft_strnequ(node->data + i, label->data, ft_strlen(label->data)))
+		{
+			//refine location before setting it to loc
+
+			loc = ft_itoa(label->location - node->location); //free loc
+			len = ft_strlen(node->data) - ft_strlen(label->data) + ft_strlen(loc);
+			ret = (char *)malloc(sizeof(char) * len + 1);
+			ft_strncat(ret, node->data, i);
+			ft_strcat(ret, loc);
+			ft_strcat(ret, node->data + i + ft_strlen(label->data));
+			free(loc);
+			return (ret);
+		}
+		label = label->next;
+	}
+	return (NULL);
+}
+
+void	save_final_list(t_asm **asm_main)
+{
+	char		*line;
+	t_asm_list	*temp;
+	t_asm_list	*node;
+
+
+	line = NULL;
+	temp = (*asm_main)->n_commands;
 	while (temp)
 	{
-		set_label_loc(temp->line_no, size, (*asm_main)->n_labels);
-		set_command_loc(temp->line_no, size, (*asm_main)->n_commands);
-		size += temp->size;
+		if (ft_strchr(temp->data, LABEL_CHAR))
+			line = set_final_line(temp, (*asm_main)->n_labels);
+		else
+			line = ft_strdup(temp->data);
+		node = new_final_node(line, temp);
+		free(line);
+		add_node_front(&((*asm_main)->final_list), node);
 		temp = temp->next;
 	}
 }
@@ -106,23 +171,26 @@ int	parse_list(t_asm **asm_main, int len)
 	{
 		if ((test = line_type(temp->data, &valid)) == 0)
 			error_(temp->line_no, "invalid input on line : ");
-		if (valid == 3)
+		else if (valid == 3)
 			save_label(temp->data, asm_main, &valid, temp->line_no);
-		if (valid == 1)
+		else if (valid == 1)
 			name++;
-		if (valid == 1)
+		else if (valid == 2)
 			comment++;
 		else if (valid < 0)
 			save_commands(temp->data, asm_main, &valid, temp->line_no);
 		temp = temp->next;
 	}
 	if (name != 1 || comment != 1)
-		error_(0, "check your header information");
-	// printf("\nBefore saving locations, from parser\n");
-	// print_list((*asm_main)->n_commands);
-	// printf("\nEnd\n\n");
+	{
+		if (comment != 1 && name == 1)
+			printf("fix your comment stupid!\n");
+		else
+			error_(0, "check your header information");
+	}
 	save_sizes(asm_main);
 	save_locations(asm_main);
+	save_final_list(asm_main);
 
 	return (1);
 }

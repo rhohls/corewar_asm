@@ -13,6 +13,7 @@ void	initialize(t_asm **asm_main)
 	(*asm_main)->o_list = NULL;
 	(*asm_main)->n_commands = NULL;
 	(*asm_main)->n_labels = NULL;
+	(*asm_main)->final_list = NULL;
 }
 
 char	**init_commands(void)
@@ -41,6 +42,21 @@ char	**init_commands(void)
 	return (ret);
 }
 
+t_asm_list *new_final_node(char *line, t_asm_list *command)
+{
+	t_asm_list *node;
+
+	node = NULL;
+	if (line)
+	{	node = (t_asm_list*)malloc(sizeof(t_asm_list));
+		node->data = ft_strdup(line);
+		node->line_no = command->line_no;
+		node->location = command->location;
+		node->size = command->size;
+		node->next = NULL;
+	}
+	return (node);
+}
 
 t_asm_list *new_node(char *line, int pos)
 {

@@ -29,7 +29,6 @@ int	cw_st(char *str, int loc, t_asm_list *labels)
 		if ((hold = check_r_i(str + i)) > 0)
 					return (ret + hold);
 	}
-	printf("ret form reg %d: \n",check_register(str + 3) );
 	error_(loc, "check the format on line : ");
 	return (0);
 }
