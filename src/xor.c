@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/asm.h"
 
 /*char        *check_xor(char *str, int i, int j)
 {
@@ -81,8 +81,7 @@ char			*xor(char *str)
 	t = hex(n, get_byte_no(str[i]));
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	
-	();
+	//free
 	i++;
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
@@ -90,7 +89,7 @@ char			*xor(char *str)
 		i++;
 	t = s;
 	s = ft_strjoin(t, " ");
-	();
+	//free
 	if (!ft_isdigit(str[i]))
 		n = long_atoi(&str[i + 1]);
 	else
@@ -99,8 +98,7 @@ char			*xor(char *str)
 	t = hex(n, get_byte_no(str[i]));
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	
-	();
+	//free
 	i++;
 	while (str[i] && str[i] != 'r')
 		i++;
@@ -109,10 +107,9 @@ char			*xor(char *str)
 	t = hex(n, 2);
 	t1 = s;
 	s = ft_strjoin(t1, " ");
-	
+	//free
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	();
-	
+	//free
 	return (s);
 }

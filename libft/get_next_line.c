@@ -48,7 +48,7 @@ static void		makeline(char **line, t_list **node)
 		temp = ft_strsub(temp, i + 1, j);
 		free((*node)->content);
 		(*node)->content = ft_strdup(temp);
-		free(temp);
+		(emp);
 	}
 	else
 		ft_strclr((*node)->content);

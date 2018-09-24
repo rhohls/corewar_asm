@@ -154,7 +154,7 @@ void	save_final_list(t_asm **asm_main)
 	}
 }
 
-int	parse_list(t_asm **asm_main, int len)
+int	parse_list(t_asm **asm_main)
 {
 	int			valid;
 	t_asm_list	*temp;
@@ -164,7 +164,6 @@ int	parse_list(t_asm **asm_main, int len)
 
 	valid = 0;
 	temp = (*asm_main)->o_list;
-	len = 0;
 	name = 0;
 	comment = 0;
 	while (temp)

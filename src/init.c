@@ -53,6 +53,7 @@ t_asm_list *new_final_node(char *line, t_asm_list *command)
 		node->line_no = command->line_no;
 		node->location = command->location;
 		node->size = command->size;
+		node->hex = NULL;
 		node->next = NULL;
 	}
 	return (node);

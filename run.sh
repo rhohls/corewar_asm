@@ -1,1 +1,1 @@
-gcc -o lem-in src/*.c -I./libft ./libft/libft.a -I./include
+gcc -o asm src/*.c -I./libft ./libft/libft.a -I./include

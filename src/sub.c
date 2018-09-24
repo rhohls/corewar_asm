@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/asm.h"
 
 char		*get_sub_op_code(void)
 {
@@ -34,8 +34,7 @@ char		*sub_arg1(char *str, char *s)
 	t = hex(n, 2);
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	();
-	
+	//free(1);
 	return (s);
 }
 
@@ -55,11 +54,10 @@ char		*sub_arg2(char *str, char *s)
 	t = hex(n, 2);
 	t1 = s;
 	s = ft_strjoin(t1, " ");
-	
+	//free(1);
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	();
-	
+	//free;
 	return (s);
 }
 
@@ -82,11 +80,10 @@ char		*sub_arg3(char *str, char *s)
 	t = hex(n, 2);
 	t1 = s;
 	s = ft_strjoin(t1, " ");
-	
+	//free;
 	t1 = s;
 	s = ft_strjoin(t1, t);
-	();
-	
+	//free
 	return (s);
 }
 
@@ -94,7 +91,7 @@ char		*sub(char *str)
 {
 	char		*s;
 
-	s = get_sub_op_code();
+	s = get_sub_op_code();//free
 	s = sub_arg1(str, s);
 	s = sub_arg2(str, s);
 	s = sub_arg3(str, s);

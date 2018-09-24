@@ -16,6 +16,7 @@ int	cw_add(char *str, int loc, t_asm_list *labels)
 {
 	int i;
 	int ret;
+	int j;
 
 	i = 4;
 	ret = 2;
@@ -24,12 +25,14 @@ int	cw_add(char *str, int loc, t_asm_list *labels)
 	{
 		ret += 1;
 		i = (str[6] == ',') ? 7 : 8;
-		i = (str[i] == ' ') ? ++i : i;
+		j = i;
+		i = (str[j] == ' ') ? ++j : j;
 		if (check_register(str + i))
 		{
 			ret += 1;
 			i = (str[6] == ',') ? 7 : 8;
-			i = (str[i] == ' ') ? ++i : i;
+			j = i;
+			i = (str[j] == ' ') ? ++j : j;
 			if (check_register(str + i))
 				return (ret + 1);
 		}

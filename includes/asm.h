@@ -24,6 +24,7 @@
 typedef struct			s_asm_list
 {
 	char				*data;
+	char				*hex;
 	int					location;
 	int					size;
 	int					line_no;
@@ -51,7 +52,7 @@ int						is_name(char *line, int *valid);
 int						is_label(char *line, int *valid);
 int						is_comment(char *line, int *valid);
 int						is_command(char *line, int *valid);
-int						parse_list(t_asm **asm_main, int len);
+int						parse_list(t_asm **asm_main);
 int						line_type(char *line, int *valid);
 int						balancing_quotations(char *line);
 void					print_list(t_asm_list *list);
@@ -102,4 +103,40 @@ static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
     cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,
     cw_lfork, cw_aff, cw_live
 };
+
+/*
+**	converter functions
+*/
+int					converter_main(t_asm_list *list, char **av);
+void				add_asm_node(t_asm **h, char *line);
+
+long long			long_atoi(const char *str);
+long long       	clean_value(long long n);
+char   				*hex(long long n, int bits);
+int         		get_byte_no(char c);
+int 		        i_byte_no(char c);
+
+char      			*live(char *str);
+char        		*ld(char *str);
+char        		*st(char *str);
+char        		*add(char *str);
+char        		*sub(char *str);
+char				*and(char *str);
+char				*or(char *str);
+char				*xor(char *str);
+char				*zjmp(char *str);
+char				*ldi(char *str);
+char				*sti(char *str);
+char       			*ft_fork(char *str);
+char				*lld(char *str);
+char				*lldi(char *str);
+char				*ft_lfork(char *str);
+char				*aff(char *str);
+
+char				*check_and(char *str, int i, int j);
+char				*check_ldi(char *str, int i, int j);
+char				*check_lldi(char *str, int i, int j);
+char				*check_or(char *str, int i, int j);
+char				*check_sti(char *str, int i, int j);
+char				*check_xor(char *str, int i, int j);
 #endif
