@@ -111,14 +111,11 @@ char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 	i = 0;
 	label = labels;
 	i = len_to_char(node->data, LABEL_CHAR);
-	i = (node->data[i + 1] == ' ') ? i + 2 : i + 1;
 	while (label)
 	{
 		if (ft_strnequ(node->data + i, label->data, ft_strlen(label->data)))
 		{
-			//refine location before setting it to loc
-
-			loc = ft_itoa(label->location - node->location); //free loc
+			loc = ft_itoa(label->location - node->location);
 			len = ft_strlen(node->data) - ft_strlen(label->data) + ft_strlen(loc);
 			ret = (char *)malloc(sizeof(char) * len + 1);
 			ft_strncat(ret, node->data, i);
