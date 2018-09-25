@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   print_byte_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 13:35:22 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:58:20 by fledwaba         ###   ########.fr       */
+/*   Created: 2018/09/24 09:17:34 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/24 09:17:37 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void    store_core_int(int number, int fd)
+void        print_byte_list(t_byte *h)
 {
-    char *num;
-	char prog[4];
-    num = (char *)(&number);
-    
-    prog[0] = num[3];
-    prog[1] = num[2];
-    prog[2] = num[1];
-    prog[3] = num[0];
-	write(fd, prog, 4);
-}
+    t_byte  *t;
 
-void		live(char *str, int fd)
-{
-	long long		n;
-	int				i;
-
-	n = 1;
-	write(fd, &n, 1);
-	while (str[i] && str[i] != '%')
-		i++;
-	i++;
-	n = long_atoi(&str[i]);
-	n = clean_value(n);
-	store_core_int(n, fd);
+    t = h;
+    ft_putendl("\nlist:");
+    while (t)
+    {
+        ft_putendl(t->str);
+        t = t->next;
+    }
 }

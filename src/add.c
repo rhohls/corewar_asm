@@ -12,81 +12,58 @@
 
 #include "../includes/asm.h"
 
-char		*get_add_arg1_value(char *str)
+void		get_add_arg1_value(char *str, int fd)
 {
-	char		*s;
-	char		*t;
 	int			i;
 	long long	n;
 
+	n = 4;
+	write(fd, &n, 1);
+	i = 84;
+	write(fd, &i, 1);
 	i = 0;
 	while (str[i] && !ft_isdigit(str[i]))
 		i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	s = ft_strjoin("04 54 ", t);
-	//free
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*get_add_arg2_value(char *str, char *s)
+void		get_add_arg2_value(char *str, int fd)
 {
-	char		*ret;
 	long long	n;
-	char		*t;
-	char		*t1;
 	int			i;
 
 	i = 0;
+	while (str[i] && str[i] != ',')
+		i++;
 	while (str[i] && str[i] != 'r')
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	ret = ft_strjoin(s, " ");
-	t1 = ret;
-	ret = ft_strjoin(t1, t);
-	//free
-	
-	return (ret);
+	write(fd, &n, 1);
 }
 
-char		*get_add_arg3_value(char *str, char *s)
+void		get_add_arg3_value(char *str, int fd)
 {
-	char		*ret;
 	long long	n;
-	char		*t;
-	char		*t1;
 	int			i;
 
 	i = 0;
-	while (str[i] && str[i] != 'r')
+	while (str[i] && str[i] != ',')
 		i++;
 	i++;
+	while (str[i] && str[i] != ',')
+		i++;
 	while (str[i] && str[i] != 'r')
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	ret = ft_strjoin(s, " ");
-	t1 = ret;
-	ret = ft_strjoin(t1, t);
-	//free(1);
-	
-	return (ret);
+	write(fd, &n, 1);
 }
 
-char		*add(char *str)
+void		add(char *str, int fd)
 {
-	char		*s;
-	// char		*t;
-
-	s = get_add_arg1_value(str);
-	// t = s;
-	s = get_add_arg2_value(str, s);
-	//free
-	// t = s;
-	s = get_add_arg3_value(str, s);
-	//free
-	return (s);
+	get_add_arg1_value(str, fd);
+	get_add_arg2_value(str, fd);
+	get_add_arg3_value(str, fd);
 }

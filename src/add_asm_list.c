@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   add_asm_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 13:35:22 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:58:20 by fledwaba         ###   ########.fr       */
+/*   Created: 2018/09/05 10:43:50 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/05 11:13:40 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void    store_core_int(int number, int fd)
+t_byte		*node(char *line)
 {
-    char *num;
-	char prog[4];
-    num = (char *)(&number);
-    
-    prog[0] = num[3];
-    prog[1] = num[2];
-    prog[2] = num[1];
-    prog[3] = num[0];
-	write(fd, prog, 4);
+	t_byte	*new;
+
+	new = (t_byte*)malloc(sizeof(t_byte));
+	new->next = NULL;
+	if (!line)
+		new->str = NULL;
+	else
+		new->str = ft_strdup(line);
+	return (new);
 }
 
-void		live(char *str, int fd)
+void		add_asm_node(t_byte **h, char *line)
 {
-	long long		n;
-	int				i;
+	t_byte		*t;
+	t_byte		*new;
 
-	n = 1;
-	write(fd, &n, 1);
-	while (str[i] && str[i] != '%')
-		i++;
-	i++;
-	n = long_atoi(&str[i]);
-	n = clean_value(n);
-	store_core_int(n, fd);
+	new = node(line);
+	t = *h;
+	if (t == NULL)
+	{
+		*h = new;
+		return ;
+	}
+	while (t->next)
+		t = t->next;
+	t->next = new;
 }

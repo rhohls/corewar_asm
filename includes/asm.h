@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/21 12:24:55 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/25 10:42:07 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,36 +107,45 @@ static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 /*
 **	converter functions
 */
-int					converter_main(t_asm_list *list, char **av);
-void				add_asm_node(t_asm **h, char *line);
+typedef struct      s_byte
+{
+    char            *str;
+    struct s_byte   *next;
+}                   t_byte;
 
-long long			long_atoi(const char *str);
-long long       	clean_value(long long n);
-char   				*hex(long long n, int bits);
-int         		get_byte_no(char c);
-int 		        i_byte_no(char c);
+void                add_asm_node(t_byte **h, char *line);
 
-char      			*live(char *str);
-char        		*ld(char *str);
-char        		*st(char *str);
-char        		*add(char *str);
-char        		*sub(char *str);
-char				*and(char *str);
-char				*or(char *str);
-char				*xor(char *str);
-char				*zjmp(char *str);
-char				*ldi(char *str);
-char				*sti(char *str);
-char       			*ft_fork(char *str);
-char				*lld(char *str);
-char				*lldi(char *str);
-char				*ft_lfork(char *str);
-char				*aff(char *str);
+long long           long_atoi(const char *str);
+long long           clean_value(long long n);
+char                *hex(long long n, int bits);
+int                 get_byte_no(char c);
+int                 i_byte_no(char c);
 
-char				*check_and(char *str, int i, int j);
-char				*check_ldi(char *str, int i, int j);
-char				*check_lldi(char *str, int i, int j);
-char				*check_or(char *str, int i, int j);
-char				*check_sti(char *str, int i, int j);
-char				*check_xor(char *str, int i, int j);
+void                live(char *str, int fd);
+char                *ld(char *str);
+char                *st(char *str);
+void                add(char *str, int fd);
+char                *sub(char *str);
+char                *and(char *str);
+char                *or(char *str);
+char                *xor(char *str);
+char                *zjmp(char *str);
+char                *ldi(char *str);
+char                *sti(char *str);
+char                *ft_fork(char *str);
+char                *lld(char *str);
+char                *lldi(char *str);
+char                *ft_lfork(char *str);
+char                *aff(char *str);
+
+char                *check_and(char *str, int i, int j);
+char                *check_ldi(char *str, int i, int j);
+char                *check_lldi(char *str, int i, int j);
+char                *check_or(char *str, int i, int j);
+char                *check_sti(char *str, int i, int j);
+char                *check_xor(char *str, int i, int j);
+
+t_byte              *convert_code(t_asm *list, int fd);
+void                print_byte_list(t_byte *h);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: swilson <swilson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
-#    Updated: 2018/09/19 11:40:15 by swilson          ###   ########.fr        #
+#    Updated: 2018/09/25 10:43:52 by fledwaba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,12 @@ HEADER = include/asm.h
 SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c\
 			test_files.c cw_add.c cw_aff.c cw_and.c cw_fork.c cw_ld.c cw_ldi.c\
 			cw_null.c cw_live.c cw_lfork.c cw_lld.c cw_lldi.c cw_or.c cw_st.c\
-			cw_sti.c cw_sub.c cw_xor.c cw_zjmp.c converter_main.c
+			cw_sti.c cw_sub.c cw_xor.c cw_zjmp.c convert.c print_byte_list.c \
+			add_asm_list.c hex.c long_atoi.c ld.c and.c or.c xor.c zjmp.c \
+			ldi.c sti.c fork.c lld.c lldi.c lfork.c aff.c live.c st.c add.c \
+			sub.c and_encoding.c ldi_encoding.c lldi_encoding.c or_encoding.c \
+			sti_encoding.c xor_encoding.c
+
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
