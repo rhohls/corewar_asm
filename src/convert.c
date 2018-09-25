@@ -26,10 +26,12 @@ t_byte		*convert_code(t_asm *list, int fd)
 			live(t->data, fd);
 		else if (ft_strstr(t->data, "add"))
 			add(t->data, fd);
-//		else if (ft_strstr(t->data, "lldi"))
-//			add_asm_node(&h, lldi(t->data));
-//		/*else if (ft_strstr(t->data, "ldi"))
-//			add_asm_node(&h, ldi(t->data));
+		else if (ft_strstr(t->data, "aff"))
+			aff(t->data, fd);
+		else if (ft_strstr(t->data, "lldi"))
+			lldi(t->data, fd);
+		else if (ft_strstr(t->data, "ldi"))
+			ldi(t->data, fd);
 //		else if (ft_strstr(t->data, "lld"))
 //			add_asm_node(&h, lld(t->data));
 //		else if (ft_strstr(t->data, "ld"))

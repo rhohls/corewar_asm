@@ -12,28 +12,25 @@
 
 #include "../includes/asm.h"
 
-char		*check_lldi(char *str, int i, int j)
+int			check_encoding_byte(char *str, int i, int j)
 {
-	char	*s;
-
-	s = NULL;
 	if (str[i] == '%' && str[j] == '%')
-		s = ft_strdup("0e a4 ");
+		return (164); //s = ft_strdup("0e a4 ");
 	else if (str[i] == '%' && ft_isdigit(str[j]))
-		s = ft_strdup("0e b4 ");
+		return (180); //s = ft_strdup("0e b4 ");
 	else if (str[i] == '%' && str[j] == 'r')
-		s = ft_strdup("0e 94 ");
+		return (148); //s = ft_strdup("0e 94 ");
 	else if (ft_isdigit(str[i]) && str[j] == '%')
-		s = ft_strdup("0e e4 ");
+		return (228); //s = ft_strdup("0e e4 ");
 	else if (ft_isdigit(str[i]) && ft_isdigit(str[j]))
-		s = ft_strdup("0e f4 ");
+		return (244); //s = ft_strdup("0e f4 ");
 	else if (ft_isdigit(str[i]) && str[j] == 'r')
-		s = ft_strdup("0e d4 ");
+		return (212); //s = ft_strdup("0e d4 ");
 	else if (str[i] == 'r' && str[j] == '%')
-		s = ft_strdup("0e 64 ");
+		return (100); //s = ft_strdup("0e 64 ");
 	else if (str[i] == 'r' && ft_isdigit(str[j]))
-		s = ft_strdup("0e 74 ");
+		return (116); //s = ft_strdup("0e 74 ");
 	else if (str[i] == 'r' && str[j] == 'r')
-		s = ft_strdup("0e 54 ");
-	return (s);
+		return (84); //s = ft_strdup("0e 54 ");
+	return (-1);
 }

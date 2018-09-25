@@ -15,37 +15,11 @@
 int			i_byte_no(char c)
 {
 	if (c == '%')
-		return (4);
-	else if (ft_isdigit(c))
-		return (4);
-	else if (c == 'r')
 		return (2);
+	else if (ft_isdigit(c))
+		return (2);
+	else if (c == 'r')
+		return (1);
 	else
 		return (-1);
-}
-
-char		*check_ldi(char *str, int i, int j)
-{
-	char		*s;
-
-	s = NULL;
-	if (str[i] == '%' && str[j] == '%')
-		s = ft_strdup("0a a4 ");
-	else if (str[i] == '%' && ft_isdigit(str[j]))
-		s = ft_strdup("0a b4 ");
-	else if (str[i] == '%' && str[j] == 'r')
-		s = ft_strdup("0a 94 ");
-	else if (ft_isdigit(str[i]) && str[j] == '%')
-		s = ft_strdup("0a e4 ");
-	else if (ft_isdigit(str[i]) && ft_isdigit(str[j]))
-		s = ft_strdup("0a f4 ");
-	else if (ft_isdigit(str[i]) && str[j] == 'r')
-		s = ft_strdup("0a d4 ");
-	else if (str[i] == 'r' && str[j] == '%')
-		s = ft_strdup("0a 64 ");
-	else if (str[i] == 'r' && ft_isdigit(str[j]))
-		s = ft_strdup("0a 74 ");
-	else if (str[i] == 'r' && str[j] == 'r')
-		s = ft_strdup("0a 54 ");
-	return (s);
 }

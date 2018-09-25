@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
+# include <unistd.h>
 # define LINE_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789 ,%:-"
 
 
@@ -130,22 +131,24 @@ char                *and(char *str);
 char                *or(char *str);
 char                *xor(char *str);
 char                *zjmp(char *str);
-char                *ldi(char *str);
+void                ldi(char *str, int fd);
 char                *sti(char *str);
 char                *ft_fork(char *str);
 char                *lld(char *str);
-char                *lldi(char *str);
+void                lldi(char *str, int fd);
 char                *ft_lfork(char *str);
-char                *aff(char *str);
+void                aff(char *str, int fd);
 
-char                *check_and(char *str, int i, int j);
-char                *check_ldi(char *str, int i, int j);
-char                *check_lldi(char *str, int i, int j);
-char                *check_or(char *str, int i, int j);
-char                *check_sti(char *str, int i, int j);
-char                *check_xor(char *str, int i, int j);
+//char                *check_and(char *str, int i, int j);
+//char                *check_ldi(char *str, int i, int j);
+int	                check_encoding_byte(char *str, int i, int j);
+//char                *check_or(char *str, int i, int j);
+//char                *check_sti(char *str, int i, int j);
+//char                *check_xor(char *str, int i, int j);
 
 t_byte              *convert_code(t_asm *list, int fd);
 void                print_byte_list(t_byte *h);
+void   				store_core_int_4(int number, int fd);
+void  				store_core_int_2(int number, int fd);
 
 #endif

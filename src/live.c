@@ -12,7 +12,7 @@
 
 #include "../includes/asm.h"
 
-void    store_core_int(int number, int fd)
+void    store_core_int_4(int number, int fd)
 {
     char *num;
 	char prog[4];
@@ -23,6 +23,17 @@ void    store_core_int(int number, int fd)
     prog[2] = num[1];
     prog[3] = num[0];
 	write(fd, prog, 4);
+}
+
+void    store_core_int_2(int number, int fd)
+{
+    char *num;
+	char prog[2];
+    num = (char *)(&number);
+    
+    prog[0] = num[1];
+    prog[1] = num[0];
+	write(fd, prog, 2);
 }
 
 void		live(char *str, int fd)
@@ -37,5 +48,5 @@ void		live(char *str, int fd)
 	i++;
 	n = long_atoi(&str[i]);
 	n = clean_value(n);
-	store_core_int(n, fd);
+	store_core_int_4(n, fd);
 }

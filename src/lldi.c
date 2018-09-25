@@ -12,12 +12,14 @@
 
 #include "../includes/asm.h"
 
-char		*get_lldi_opt_code(char *str)
+void		get_lldi_opt_code(char *str, int fd)
 {
 	int		i;
 	int		j;
-	char	*s;
+	int		n;
 
+	n = 14;
+	write(fd, &n, 1);
 	i = 0;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
@@ -26,16 +28,14 @@ char		*get_lldi_opt_code(char *str)
 		j++;
 	while (str[j] && str[j] != 'r' && str[j] != '%' && !ft_isdigit(str[j]))
 		j++;
-	s = check_lldi(str, i, j);
-	return (s);
+	n = check_encoding_byte(str, i, j);
+	write(fd, &n, 1);
 }
 
-char		*lldi_arg1(char *str, char *s)
+void		lldi_arg1(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ' ')
@@ -47,48 +47,37 @@ char		*lldi_arg1(char *str, char *s)
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, i_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	
-	//free(1);
-	return (s);
+	if (i_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*lldi_arg2(char *str, char *s)
+void		lldi_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
-
+	
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
-	t = s;
-	s = ft_strjoin(t, " ");
-	//free
 	if (!ft_isdigit(str[i]))
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, i_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	
-	//free(1);
-	return (s);
+	if (i_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*lldi_arg3(char *str, char *s)
+void		lldi_arg3(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
@@ -100,22 +89,13 @@ char		*lldi_arg3(char *str, char *s)
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*lldi(char *str)
+void		lldi(char *str, int fd)
 {
-	char		*s;
-
-	s = get_lldi_opt_code(str);
-	s = lldi_arg1(str, s);
-	s = lldi_arg2(str, s);
-	s = lldi_arg3(str, s);
-	return (s);
+	get_lldi_opt_code(str, fd);
+	lldi_arg1(str, fd);
+	lldi_arg2(str, fd);
+	lldi_arg3(str, fd);
 }
