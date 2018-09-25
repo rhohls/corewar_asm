@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/25 10:42:07 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/25 15:40:54 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct			s_asm_list
 
 typedef struct			s_asm
 {
+	int					comm_size;
+	int					program_size;
 	t_header			*header;
 	t_asm_list			*o_list;
 	t_asm_list			*n_commands;
@@ -49,12 +51,12 @@ void					initialize(t_asm **asm_main);
 char					**init_commands(void);
 t_asm_list				*new_node(char *line, int pos);
 void					add_node_front(t_asm_list **head, t_asm_list *node);
-int						is_name(char *line, int *valid);
+int						is_name(char *line, int *valid, t_asm **asm_main);
 int						is_label(char *line, int *valid);
-int						is_comment(char *line, int *valid);
+int						is_comment(char *line, int *valid, t_asm **main);
 int						is_command(char *line, int *valid);
 int						parse_list(t_asm **asm_main);
-int						line_type(char *line, int *valid);
+int						line_type(char *line, int *valid, t_asm **asm_main);
 int						balancing_quotations(char *line);
 void					print_list(t_asm_list *list);
 void					save_commands(char *str, t_asm **asm_main, int *valid, int loc);

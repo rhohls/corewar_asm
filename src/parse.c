@@ -27,7 +27,7 @@ void	save_sizes(t_asm **asm_main)
 	labels = (*asm_main)->n_labels;
 	while (temp)
 	{
-		line_type(temp->data, &valid);
+		line_type(temp->data, &valid, asm_main);
 		if (valid < 0)
 		{
 			command = sanitised_command(temp->line_no, (*asm_main)->n_commands);
@@ -85,7 +85,6 @@ void	save_locations(t_asm **asm_main)
 			set_label_loc(labels->line_no, size, labels);
 			labels = labels->next;
 		}
-		// set_label_loc(commands->line_no, size, labels);
 		set_command_loc(commands->line_no, size, commands);
 		size += commands->size;
 		commands = commands->next;
@@ -98,6 +97,8 @@ void	save_locations(t_asm **asm_main)
 			}
 		}
 	}
+	(*asm_main)->comm_size = size;
+	(*asm_main)->program_size = PROG_NAME_LENGTH + COMMENT_LENGTH + size;
 }
 
 char	*set_final_line(t_asm_list *node, t_asm_list *labels)
@@ -111,6 +112,7 @@ char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 	i = 0;
 	label = labels;
 	i = len_to_char(node->data, LABEL_CHAR);
+	i++;
 	while (label)
 	{
 		if (ft_strnequ(node->data + i, label->data, ft_strlen(label->data)))
@@ -141,7 +143,9 @@ void	save_final_list(t_asm **asm_main)
 	while (temp)
 	{
 		if (ft_strchr(temp->data, LABEL_CHAR))
+		{
 			line = set_final_line(temp, (*asm_main)->n_labels);
+		}
 		else
 			line = ft_strdup(temp->data);
 		node = new_final_node(line, temp);
@@ -165,14 +169,20 @@ int	parse_list(t_asm **asm_main)
 	comment = 0;
 	while (temp)
 	{
-		if ((test = line_type(temp->data, &valid)) == 0)
+		if ((test = line_type(temp->data, &valid, asm_main)) == 0)
 			error_(temp->line_no, "invalid input on line : ");
 		else if (valid == 3)
 			save_label(temp->data, asm_main, &valid, temp->line_no);
 		else if (valid == 1)
-			name++;
+		{
+		//	(*asm_main)->header->name;
+			name++;//save name
+		}
 		else if (valid == 2)
-			comment++;
+		{
+			//	(*asm_main)->header->comment;
+			comment++;//save comment
+		}
 		else if (valid < 0)
 			save_commands(temp->data, asm_main, &valid, temp->line_no);
 		temp = temp->next;
@@ -180,7 +190,7 @@ int	parse_list(t_asm **asm_main)
 	if (name != 1 || comment != 1)
 	{
 		if (comment != 1 && name == 1)
-			printf("fix your comment stupid!\n");
+			printf("fix your comment stupid!\n");//save comment
 		else
 			error_(0, "check your header information");
 	}
@@ -191,11 +201,11 @@ int	parse_list(t_asm **asm_main)
 	return (1);
 }
 
-int	line_type(char *line, int *valid)
+int	line_type(char *line, int *valid, t_asm **asm_main)
 {
-	if (is_name(line, valid))
+	if (is_name(line, valid, asm_main))
 		return (1);
-	else if (is_comment(line, valid))
+	else if (is_comment(line, valid, asm_main))
 		return (2);
 	else if (is_label(line, valid))
 		return (3);

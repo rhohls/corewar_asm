@@ -19,7 +19,6 @@ t_asm_list	*read_from_file(char *file_name, t_asm **asm_main)
 	t_asm_list	*list;
 	t_asm_list	*temp;
 
-	// fd = open(file_name, O_RDWR | O_CLOEXEC | O_CREAT,S_IRWXU); this is for writing
 	fd = open(file_name, O_RDONLY);
 	i = 0;
 	list = (*asm_main)->o_list;

@@ -15,8 +15,6 @@ void	print_list(t_asm_list *list)
 		ft_putnbr(temp->location);
 		ft_putstr("\t| ");
 		ft_putnbr(temp->size);
-		ft_putstr("\t|");
-		ft_putstr(temp->hex);
 		ft_putstr("\n");
 		temp = temp->next;
 	}

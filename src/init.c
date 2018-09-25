@@ -14,6 +14,8 @@ void	initialize(t_asm **asm_main)
 	(*asm_main)->n_commands = NULL;
 	(*asm_main)->n_labels = NULL;
 	(*asm_main)->final_list = NULL;
+	(*asm_main)->comm_size = 0;
+	(*asm_main)->program_size = 0;
 }
 
 char	**init_commands(void)

@@ -60,7 +60,7 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	loc_colon++;
 	while (is_white_space(str[loc_colon]))
 		loc_colon++;
-	line_type(str + loc_colon, valid);
+	line_type(str + loc_colon, valid, asm_main);
 	if (*valid < 0)
 		save_commands(str + loc_colon, asm_main, valid, loc);
 	temp = new_node(line, loc);
