@@ -49,10 +49,10 @@ void        convert_header(t_asm *asm_main, int fd)
 
     n = asm_main->header->magic;
     n = clean_value(n);
-    printf("magic no = %lld\n", n);
+    // printf("magic no = %lld\n", n);
     store_core_int_4(n, fd);
-    printf("%s len = %lu\n", asm_main->header->prog_name, ft_strlen(asm_main->header->prog_name));
-    printf("%s len = %lu\n", asm_main->header->comment, ft_strlen(asm_main->header->comment));
+    // printf("%s len = %lu\n", asm_main->header->prog_name, ft_strlen(asm_main->header->prog_name));
+    // printf("%s len = %lu\n", asm_main->header->comment, ft_strlen(asm_main->header->comment));
     convert_name(asm_main->header->prog_name, fd, PROG_NAME_LENGTH);
     convert_comment(asm_main->header->comment, fd, COMMENT_LENGTH);
 }
