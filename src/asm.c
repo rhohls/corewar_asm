@@ -36,6 +36,7 @@ int		main(int argc, char *argv[])
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
 		// print_list(asm_main->o_list);
 		parse_list(&asm_main);
+		asm_main->header->prog_size = asm_main->program_size;
 		// printf("\n\nnew lists\n\n");
 		// print_list(asm_main->n_commands);
 		// printf("\n\nnew label list\n\n");
