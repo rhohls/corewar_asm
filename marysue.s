@@ -9,7 +9,7 @@
 # r6 - irrelevant register
 
 init:
-		sti r1, %:copy, %1			; initialize live instructions
+		sti r1, %:copy, %1			#; initialize live instructions
 		sti r1, %:live, %1
 
 		ld %0, r6					; destroy live initialization routine

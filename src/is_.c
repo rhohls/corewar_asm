@@ -3,10 +3,11 @@
 
 int	save_header_name(char *line, t_asm **asm_main)
 {
+	// printf("\n\nSAVE NAME FUNC\n");
 	int i;
 
 	i = 0;
-	printf("name saved here\n");
+	// printf("name saved here\n");
 	if ((ft_strlen(line) - 1) > PROG_NAME_LENGTH)
 		error_(0, "name too long");
 	while ((line[i] != '"') && line[i])
@@ -14,8 +15,8 @@ int	save_header_name(char *line, t_asm **asm_main)
 		(*asm_main)->header->prog_name[i] = line[i];
 		i++;
 	}
-	printf("\n%s\n\n", (*asm_main)->header->prog_name);
-	printf("done saving name");
+	// printf("\n%s\n\n", (*asm_main)->header->prog_name);
+	// printf("done saving name");
 	return (1);
 }
 
@@ -23,7 +24,7 @@ int	save_header_comment(char *line, t_asm **asm_main)
 {
 	int i;
 
-	printf("comment saved here\n");
+	// printf("comment saved here\n");
 	i = 0;
 	if ((ft_strlen(line) - 1) > COMMENT_LENGTH)
 		error_(0, "comment too long");
@@ -32,6 +33,8 @@ int	save_header_comment(char *line, t_asm **asm_main)
 		(*asm_main)->header->comment[i] = line[i];
 		i++;
 	}
+	// printf("\n%s_____________\n\n", (*asm_main)->header->comment);
+	// ft_putendl("done saving comment");
 	return (1);
 }
 
@@ -57,7 +60,7 @@ int	is_name(char *line, int *valid, t_asm **asm_main)
 		{
 			*valid = 1;
 			save_header_name(line + 1 + i, asm_main);
-			printf("line = %s\n", line + i + 1);
+			// printf("line = %s\n", line + i + 1);
 			return (1);
 		}
 	}
@@ -103,7 +106,8 @@ int	is_comment(char *line, int *valid, t_asm **asm_main)
 			i++;
 		if (balancing_quotations(line + i))
 		{
-			save_header_name(line + 1 + i, asm_main);
+			save_header_comment(line + 1 + i, asm_main);
+			// ft_putendl("is comment end\n");
 			*valid = 2;
 			return (1);
 		}

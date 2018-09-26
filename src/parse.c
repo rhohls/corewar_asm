@@ -112,17 +112,16 @@ char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 	i = 0;
 	label = labels;
 	i = len_to_char(node->data, LABEL_CHAR);
-	i++;
 	while (label)
 	{
-		if (ft_strnequ(node->data + i, label->data, ft_strlen(label->data)))
+		if (ft_strnequ(node->data + i + 1, label->data, ft_strlen(label->data)))
 		{
 			loc = ft_itoa(label->location - node->location);
 			len = ft_strlen(node->data) - ft_strlen(label->data) + ft_strlen(loc);
-			ret = (char *)malloc(sizeof(char) * len + 1);
+			ret = ft_memalloc(len);
 			ft_strncat(ret, node->data, i);
 			ft_strcat(ret, loc);
-			ft_strcat(ret, node->data + i + ft_strlen(label->data));
+			ft_strcat(ret, node->data + i + ft_strlen(label->data) + 1);
 			free(loc);
 			return (ret);
 		}
@@ -143,9 +142,7 @@ void	save_final_list(t_asm **asm_main)
 	while (temp)
 	{
 		if (ft_strchr(temp->data, LABEL_CHAR))
-		{
 			line = set_final_line(temp, (*asm_main)->n_labels);
-		}
 		else
 			line = ft_strdup(temp->data);
 		node = new_final_node(line, temp);
