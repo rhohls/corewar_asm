@@ -6,11 +6,24 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/21 14:22:18 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/26 12:18:40 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+
+int			is_empty(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i])
+		return (0);
+	return (1);
+}
 
 int	is_valid_nbr(char *s, int sign)
 {
@@ -189,7 +202,6 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 	int j;
 	int ret;
 	int hold;
-// printf("in sti===============================>\n");
 	i = 0;
 	ret = 2;
 	while (is_white_space(str[i]))
@@ -200,7 +212,6 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 		ret += 1;
 		j = len_to_char(str, ',');
 		i = (str[j + 1] == ' ') ? j + 2 : j + 1;
-		// printf("str = %s\n", str + i);
 		if ((hold = check_r_d_i(str + i, labels)) > 0)
 		{
 			j = len_to_char(str + i, ' ');
@@ -208,11 +219,14 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 			i++;
 			if (hold == 1)
 				ret += 1;
-			else// if ((hold == 2) || (hold == 3))
+			else
 				ret += 2;
-				// printf("ret == %d\n", ret);
 			if ((hold = check_r_d(str + i, labels)) > 0)
+			{
+				j = len_to_char(str + i, ' ');
+				if (is_empty(str + j) || j < 0)
 					return (ret + hold);
+			}
 		}
 	}
 	error_(loc, "check the format on line : ");

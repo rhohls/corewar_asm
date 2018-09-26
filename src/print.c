@@ -19,3 +19,14 @@ void	print_list(t_asm_list *list)
 		temp = temp->next;
 	}
 }
+
+void	print_name_comment(t_asm **asm_main, char *name)
+{
+	ft_putstr("Assembling ");
+	ft_putstr(name);
+	ft_putendl(":");
+	ft_putstr("\t\t");
+	ft_putendl((*asm_main)->header->prog_name);
+	ft_putstr("\t\t");
+	ft_putendl((*asm_main)->header->comment);
+}
