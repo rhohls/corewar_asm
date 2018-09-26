@@ -41,9 +41,9 @@ int		main(int argc, char *argv[])
 		// print_list(asm_main->n_commands);
 		// printf("\n\nnew label list\n\n");
 		// print_list(asm_main->n_labels);
-		// printf("\n\nFINAL list\n\n");
-		// print_list(asm_main->final_list);
-		// printf("total program size = %d\n", asm_main->program_size);
+		printf("\n\nFINAL list\n\n");
+		print_list(asm_main->final_list);
+		printf("total program size = %d\n", asm_main->program_size);
 		print_name_comment(&asm_main, argv[1]);
 		name = get_file_name(argv[1]);
 		fd = open(name, O_RDWR | O_CLOEXEC | O_CREAT,S_IRWXU);
