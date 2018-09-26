@@ -12,12 +12,14 @@
 
 #include "../includes/asm.h"
 
-char		*get_or_opt_code(char *str)
+void		get_or_opt_code(char *str, int fd)
 {
 	int		i;
 	int		j;
-	char	*s;
+	int		n;
 
+	n = 7;
+	write(fd, &n, 1);
 	i = 0;
 	while (str[i] != ' ')
 		i++;
@@ -28,16 +30,14 @@ char		*get_or_opt_code(char *str)
 		j++;
 	while (str[j] && str[j] != 'r' && str[j] != '%' && !ft_isdigit(str[j]))
 		j++;
-	s = check_or(str, i, j);
-	return (s);
+	n = check_encoding_byte(str, i, j);
+	write(fd, &n, 1);
 }
 
-char		*or_arg1(char *str, char *s)
+void		or_arg1(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ' ')
@@ -49,47 +49,41 @@ char		*or_arg1(char *str, char *s)
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, get_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+		if (get_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else if (get_byte_no(str[i]) == 4)
+		store_core_int_4(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*or_arg2(char *str, char *s)
+void		or_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
-	t = s;
-	s = ft_strjoin(t, " ");
-	//free
 	if (!ft_isdigit(str[i]))
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, get_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	
-	//free
-	return (s);
+	if (get_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else if (get_byte_no(str[i]) == 4)
+		store_core_int_4(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*or_arg3(char *str, char *s)
+void		or_arg3(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
@@ -101,23 +95,13 @@ char		*or_arg3(char *str, char *s)
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free(1);
-	
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*or(char *str)
+void		or(char *str, int fd)
 {
-	char		*s;
-
-	s = get_or_opt_code(str);
-	s = or_arg1(str, s);
-	s = or_arg2(str, s);
-	s = or_arg3(str, s);
-	return (s);
+	get_or_opt_code(str, fd);
+	or_arg1(str, fd);
+	or_arg2(str, fd);
+	or_arg3(str, fd);
 }

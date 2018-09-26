@@ -12,49 +12,43 @@
 
 #include "../includes/asm.h"
 
-char		*st_op_code(char *str)
+void		st_op_code(char *str, int fd)
 {
 	int		i;
-	char	*s;
+	int		n;
 
+	n = 3;
+	write(fd, &n, 1);
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
 	while (str[i] && str[i] != 'r' && !ft_isdigit(str[i]))
 		i++;
 	if (str[i] == 'r')
-		s = ft_strdup("03 05 ");
+		n = 5;
 	else
-		s = ft_strdup("03 07 ");
-	return (s);
+		n = 7;
+	write(fd, &n, 1);
 }
 
-char		*st_arg1(char *str, char *s)
+void		st_arg1(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
-
+	
 	i = 0;
 	while (str[i] && str[i] != 'r')
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*st_arg2(char *str, char *s)
+void		st_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
-
+	
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
@@ -64,22 +58,15 @@ char		*st_arg2(char *str, char *s)
 		n = long_atoi(&str[i]);
 	else
 		n = long_atoi(&str[i + 1]);
-	t = hex(n, get_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	//free;
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	if (get_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*st(char *str)
+void		st(char *str, int fd)
 {
-	char		*s;
-
-	s = st_op_code(str);
-	s = st_arg1(str, s);
-	s = st_arg2(str, s);
-	return (s);
+	st_op_code(str, fd);
+	st_arg1(str, fd);
+	st_arg2(str, fd);
 }

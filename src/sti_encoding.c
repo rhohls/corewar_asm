@@ -12,27 +12,19 @@
 
 #include "../includes/asm.h"
 
-char		*check_sti(char *str, int i, int j)
+int			check_sti(char *str, int i, int j)
 {
-	char		*s;
-
-	s = NULL;
 	if (str[i] == '%' && str[j] == '%')
-		s = ft_strdup("0b 68 ");
+		return (104); //s = ft_strdup("0b 68 ");
 	else if (str[i] == '%' && str[j] == 'r')
-		s = ft_strdup("0b 64 ");
+		return (100); //s = ft_strdup("0b 64 ");
 	else if (ft_isdigit(str[i]) && str[j] == '%')
-		s = ft_strdup("0b 78 ");
+		return (120); //s = ft_strdup("0b 78 ");
 	else if (ft_isdigit(str[i]) && str[j] == 'r')
-		s = ft_strdup("0b 74 ");
+		return (116); //s = ft_strdup("0b 74 ");
 	else if (str[i] == 'r' && str[j] == '%')
-		s = ft_strdup("0b 84 ");
+		return (132); //s = ft_strdup("0b 84 ");
 	else if (str[i] == 'r' && str[j] == 'r')
-		s = ft_strdup("0b 54 ");
-	else
-	{
-		ft_putendl("Error");
-		exit(0);
-	}
-	return (s);
+		return (84); //s = ft_strdup("0b 54 ");
+	return (-1);
 }

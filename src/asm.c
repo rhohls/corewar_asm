@@ -26,6 +26,7 @@ int		main(int argc, char *argv[])
 	t_asm	*asm_main;
 	int		fd;
 	char	*name;
+	int		n;
 
 	if (argc == 2)
 	{
@@ -44,6 +45,8 @@ int		main(int argc, char *argv[])
 		name = get_file_name(argv[1]);
 		fd = open(name, O_RDWR | O_CLOEXEC | O_CREAT,S_IRWXU);
 		//fd = open(name, O_CREAT | O_WRONLY);
+		n = 0;
+		write(fd, &n, PROG_NAME_LENGTH + COMMENT_LENGTH);
 		convert_code(asm_main, fd);
 		close(fd);
 	}

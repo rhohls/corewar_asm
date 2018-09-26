@@ -123,27 +123,27 @@ int                 get_byte_no(char c);
 int                 i_byte_no(char c);
 
 void                live(char *str, int fd);
-char                *ld(char *str);
-char                *st(char *str);
+void                ld(char *str, int fd);
+void                st(char *str, int fd);
 void                add(char *str, int fd);
-char                *sub(char *str);
-char                *and(char *str);
-char                *or(char *str);
-char                *xor(char *str);
-char                *zjmp(char *str);
+void                sub(char *str, int fd);
+void                and(char *str, int fd);
+void                or(char *str, int fd);
+void                xor(char *str, int fd);
+void                zjmp(char *str, int fd);
 void                ldi(char *str, int fd);
-char                *sti(char *str);
-char                *ft_fork(char *str);
-char                *lld(char *str);
+void                sti(char *str, int fd);
+void                ft_fork(char *str, int fd);
+void                lld(char *str, int fd);
 void                lldi(char *str, int fd);
-char                *ft_lfork(char *str);
+void                ft_lfork(char *str, int fd);
 void                aff(char *str, int fd);
 
 //char                *check_and(char *str, int i, int j);
 //char                *check_ldi(char *str, int i, int j);
 int	                check_encoding_byte(char *str, int i, int j);
 //char                *check_or(char *str, int i, int j);
-//char                *check_sti(char *str, int i, int j);
+int	                check_sti(char *str, int i, int j); //bksdbckjdsk
 //char                *check_xor(char *str, int i, int j);
 
 t_byte              *convert_code(t_asm *list, int fd);

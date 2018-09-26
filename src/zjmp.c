@@ -12,23 +12,20 @@
 
 #include "../includes/asm.h"
 
-char        *zjmp(char *str)
+void        zjmp(char *str, int fd)
 {
     int             i;
     long long       n;
-    char            *s;
-    char            *t;
-
+  
+    n = 9;
+    write(fd, &n, 1);
     i = 0;
     while (str[i] && str[i] != '%')
         i++;
     if (str[i] == '\0')
-        return (NULL);
+        return ;
     i++;
     n = long_atoi(&str[i]);
     n = clean_value(n);
-    t = hex(n, 4);
-    s = ft_strjoin("09 ", t);
-    //free
-    return (s);
+    store_core_int_2(n, fd);
 }

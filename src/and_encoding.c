@@ -15,26 +15,23 @@
 int			get_byte_no(char c)
 {
 	if (c == '%')
-		return (8);
-	else if (ft_isdigit(c))
 		return (4);
-	else if (c == 'r')
+	else if (ft_isdigit(c))
 		return (2);
+	else if (c == 'r')
+		return (1);
 	else
 		return (-1);
 }
 
-char		*check_and(char *str, int i, int j)
+/*int			check_and(char *str, int i, int j)
 {
-	char		*s;
-
-	s = NULL;
 	if (str[i] == '%' && str[j] == '%')
-		s = ft_strdup("06 a4 ");
+		return (164); //s = ft_strdup("06 a4 ");
 	else if (str[i] == '%' && ft_isdigit(str[j]))
-		s = ft_strdup("06 b4 ");
+		return (180); //s = ft_strdup("06 b4 ");
 	else if (str[i] == '%' && str[j] == 'r')
-		s = ft_strdup("06 94 ");
+		return (); //s = ft_strdup("06 94 ");
 	else if (ft_isdigit(str[i]) && str[j] == '%')
 		s = ft_strdup("06 e4 ");
 	else if (ft_isdigit(str[i]) && ft_isdigit(str[j]))
@@ -48,4 +45,4 @@ char		*check_and(char *str, int i, int j)
 	else if (str[i] == 'r' && str[j] == 'r')
 		s = ft_strdup("06 54 ");
 	return (s);
-}
+}*/

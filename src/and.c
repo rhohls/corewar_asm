@@ -12,12 +12,14 @@
 
 #include "../includes/asm.h"
 
-char		*get_and_opt_code(char *str)
+void		get_and_opt_code(char *str, int fd)
 {
 	int		i;
 	int		j;
-	char	*s;
+	int		n;
 
+	n = 6;
+	write(fd, &n, 1);
 	i = 0;
 	while (str[i] != ' ')
 		i++;
@@ -27,17 +29,15 @@ char		*get_and_opt_code(char *str)
 		j++;
 	while (str[j] && str[j] != 'r' && str[j] != '%' && !ft_isdigit(str[j]))
 		j++;
-	s = check_and(str, i, j);
-	return (s);
+	n = check_encoding_byte(str, i, j);
+	write(fd, &n, 1);
 }
 
-char		*and_arg1(char *str, char *s)
+void		and_arg1(char *str, int fd)
 {
 	int			i;
 	long long	n;
-	char		*t;
-	char		*t1;
-
+	
 	i = 0;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
@@ -46,47 +46,41 @@ char		*and_arg1(char *str, char *s)
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, get_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	
-	//free
-	return (s);
+	if (get_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else if (get_byte_no(str[i]) == 4)
+		store_core_int_4(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*and_arg2(char *str, char *s)
+void		and_arg2(char *str, int fd)
 {
 	int			i;
 	long long	n;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
-	t = s;
-	s = ft_strjoin(t, " ");
-	//free
 	if (!ft_isdigit(str[i]))
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-	t = hex(n, get_byte_no(str[i]));
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	if (get_byte_no(str[i]) == 2)
+		store_core_int_2(n, fd);
+	else if (get_byte_no(str[i]) == 4)
+		store_core_int_4(n, fd);
+	else
+		write(fd, &n, 1);
 }
 
-char		*and_arg3(char *str, char *s)
+void		and_arg3(char *str, int fd)
 {
 	int			i;
 	long long	n;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
@@ -98,22 +92,13 @@ char		*and_arg3(char *str, char *s)
 		i++;
 	i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*and(char *str)
+void		and(char *str, int fd)
 {
-	char		*s;
-
-	s = get_and_opt_code(str);
-	s = and_arg1(str, s);
-	s = and_arg2(str, s);
-	s = and_arg3(str, s);
-	return (s);
+	get_and_opt_code(str, fd);
+	and_arg1(str, fd);
+	and_arg2(str, fd);
+	and_arg3(str, fd);
 }

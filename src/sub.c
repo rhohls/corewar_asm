@@ -12,38 +12,32 @@
 
 #include "../includes/asm.h"
 
-char		*get_sub_op_code(void)
+void		get_sub_op_code(int fd)
 {
-	char	*s;
+	int		n;
 
-	s = ft_strdup("05 54 ");
-	return (s);
+	n = 5;
+	write(fd, &n, 1);
+	n = 84;
+	write(fd, &n, 1);
 }
 
-char		*sub_arg1(char *str, char *s)
+void		sub_arg1(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
-
+	
 	i = 0;
 	while (str[i] && !ft_isdigit(str[i]))
 		i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free(1);
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*sub_arg2(char *str, char *s)
+void		sub_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
@@ -51,22 +45,13 @@ char		*sub_arg2(char *str, char *s)
 	while (str[i] && !ft_isdigit(str[i]))
 		i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	//free(1);
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free;
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*sub_arg3(char *str, char *s)
+void		sub_arg3(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	char		*t;
-	char		*t1;
 
 	i = 0;
 	while (str[i] && str[i] != ',')
@@ -77,23 +62,13 @@ char		*sub_arg3(char *str, char *s)
 	while (str[i] && !ft_isdigit(str[i]))
 		i++;
 	n = long_atoi(&str[i]);
-	t = hex(n, 2);
-	t1 = s;
-	s = ft_strjoin(t1, " ");
-	//free;
-	t1 = s;
-	s = ft_strjoin(t1, t);
-	//free
-	return (s);
+	write(fd, &n, 1);
 }
 
-char		*sub(char *str)
+void		sub(char *str, int fd)
 {
-	char		*s;
-
-	s = get_sub_op_code();//free
-	s = sub_arg1(str, s);
-	s = sub_arg2(str, s);
-	s = sub_arg3(str, s);
-	return (s);
+	get_sub_op_code(fd);
+	sub_arg1(str, fd);
+	sub_arg2(str, fd);
+	sub_arg3(str, fd);
 }

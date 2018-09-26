@@ -24,39 +24,36 @@ t_byte		*convert_code(t_asm *list, int fd)
 	{
 		if (ft_strstr(t->data, "live"))
 			live(t->data, fd);
-		else if (ft_strstr(t->data, "add"))
-			add(t->data, fd);
 		else if (ft_strstr(t->data, "aff"))
 			aff(t->data, fd);
 		else if (ft_strstr(t->data, "lldi"))
 			lldi(t->data, fd);
 		else if (ft_strstr(t->data, "ldi"))
 			ldi(t->data, fd);
-//		else if (ft_strstr(t->data, "lld"))
-//			add_asm_node(&h, lld(t->data));
-//		else if (ft_strstr(t->data, "ld"))
-///			add_asm_node(&h, ld(t->data));
-//		else if (ft_strstr(t->data, "sti"))
-//			add_asm_node(&h, sti(t->data));
-//		else if (ft_strstr(t->data, "st"))
-//			add_asm_node(&h, st(t->data));
-		//..........add...........
-//		else if (ft_strstr(t->data, "sub"))
-//			add_asm_node(&h, sub(t->data));
-//		else if (ft_strstr(t->data, "and"))
-//			add_asm_node(&h, and(t->data));
-//		else if (ft_strstr(t->data, "lfork"))
-//			add_asm_node(&h, ft_lfork(t->data));
-//		else if (ft_strstr(t->data, "fork"))
-//			add_asm_node(&h, ft_fork(t->data));
-//		else if (ft_strstr(t->data, "xor"))
-//			add_asm_node(&h, xor(t->data));
-//		else if (ft_strstr(t->data, "or"))
-//			add_asm_node(&h, or(t->data));
-//		else if (ft_strstr(t->data, "zjmp"))
-//			add_asm_node(&h, zjmp(t->data));
-//		else if (ft_strstr(t->data, "aff"))
-//			add_asm_node(&h, aff(t->data));
+		else if (ft_strstr(t->data, "lld"))
+			lld(t->data, fd);
+		else if (ft_strstr(t->data, "ld"))
+			ld(t->data, fd);
+		else if (ft_strstr(t->data, "sti"))
+			sti(t->data, fd);
+		else if (ft_strstr(t->data, "st"))
+			st(t->data, fd);
+		else if (ft_strstr(t->data, "add"))
+			add(t->data, fd);
+		else if (ft_strstr(t->data, "sub"))
+			sub(t->data, fd);
+		else if (ft_strstr(t->data, "and"))
+			and(t->data, fd);
+		else if (ft_strstr(t->data, "lfork"))
+			ft_lfork(t->data, fd);
+		else if (ft_strstr(t->data, "fork"))
+			ft_fork(t->data, fd);
+		else if (ft_strstr(t->data, "xor"))
+			xor(t->data, fd);
+		else if (ft_strstr(t->data, "or"))
+			or(t->data, fd);
+		else if (ft_strstr(t->data, "zjmp"))
+			zjmp(t->data, fd);
 		t = t->next;
 	}
     return (h);
