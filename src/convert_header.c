@@ -54,5 +54,9 @@ void        convert_header(t_asm *asm_main, int fd)
     printf("%s len = %lu\n", asm_main->header->prog_name, ft_strlen(asm_main->header->prog_name));
     printf("%s len = %lu\n", asm_main->header->comment, ft_strlen(asm_main->header->comment));
     convert_name(asm_main->header->prog_name, fd, PROG_NAME_LENGTH);
+    printf("prog_size = %i\n", asm_main->header->prog_size);
+    n = asm_main->header->prog_size;
+    printf("prog size = %lli\n", n);
+    store_core_int_4(n, fd);
     convert_comment(asm_main->header->comment, fd, COMMENT_LENGTH);
 }
