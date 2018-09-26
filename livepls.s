@@ -43,7 +43,6 @@ write:
 		zjmp %:write
 
 		ld %0, r7
-
 live:
 		live %0
 		zjmp %:live
