@@ -98,7 +98,7 @@ void	save_locations(t_asm **asm_main)
 		}
 	}
 	(*asm_main)->comm_size = size;
-	(*asm_main)->program_size = PROG_NAME_LENGTH + COMMENT_LENGTH + size;
+	(*asm_main)->program_size = PROG_NAME_LENGTH + COMMENT_LENGTH + size + 4 + 4;
 }
 
 char	*set_final_line(t_asm_list *node, t_asm_list *labels)
