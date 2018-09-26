@@ -150,7 +150,7 @@ int	                check_encoding_byte(char *str, int i, int j);
 int	                check_sti(char *str, int i, int j); //bksdbckjdsk
 //char                *check_xor(char *str, int i, int j);
 
-void        		convert_header(t_asm *asm_main, int fd);
+void        		convert_header(t_header *header, int fd);
 t_byte              *convert_code(t_asm *list, int fd);
 void                print_byte_list(t_byte *h);
 void   				store_core_int_4(int number, int fd);

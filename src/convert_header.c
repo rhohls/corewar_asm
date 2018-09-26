@@ -42,21 +42,36 @@ void    convert_comment(char *comment, int fd, int comment_size)
         i++;
     }
 }
-
-void        convert_header(t_asm *asm_main, int fd)
+void    swap_bits(int *num)
 {
-    long long       n;
+    int b0,b1,b2,b3;
+    // int res;
+    
+    b0 = (*num & 0x000000ff) << 24;
+    b1 = (*num & 0x0000ff00) << 8;
+    b2 = (*num & 0x00ff0000) >> 8;
+    b3 = (*num & 0xff000000) >> 24;
 
-    n = asm_main->header->magic;
-    n = clean_value(n);
+    *num = b0 | b1 | b2 | b3;
+}
+void        convert_header(t_header *header, int fd)
+{
+
+    swap_bits((int *)&(header->magic));
+    swap_bits((int *)&(header->prog_size));
+    // long long       n;
+    write(fd, (header), sizeof(t_header));
+    // n = asm_main->header->magic;
+    // n = clean_value(n);
     // printf("magic no = %lld\n", n);
-    store_core_int_4(n, fd);
+    // store_core_int_4(n, fd);
     // printf("%s len = %lu\n", asm_main->header->prog_name, ft_strlen(asm_main->header->prog_name));
     // printf("%s len = %lu\n", asm_main->header->comment, ft_strlen(asm_main->header->comment));
-    convert_name(asm_main->header->prog_name, fd, PROG_NAME_LENGTH);
-    printf("prog_size = %i\n", asm_main->header->prog_size);
-    n = asm_main->header->prog_size;
-    printf("prog size = %lli\n", n);
-    store_core_int_4(n, fd);
-    convert_comment(asm_main->header->comment, fd, COMMENT_LENGTH);
+//     convert_name(asm_main->header->prog_name, fd, PROG_NAME_LENGTH);
+//     printf("prog_size = %i\n", asm_main->header->prog_size);
+//     n = asm_main->header->prog_size;
+//     printf("prog size = %lli\n", n);
+//     //store_core_int_4(n, fd);
+//    // store_core_int_2(n, fd);
+//     convert_comment(asm_main->header->comment, fd, COMMENT_LENGTH);
 }
