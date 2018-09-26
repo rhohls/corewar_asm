@@ -26,7 +26,7 @@ SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c\
 			add_asm_list.c hex.c long_atoi.c ld.c and.c or.c xor.c zjmp.c \
 			ldi.c sti.c fork.c lld.c lldi.c lfork.c aff.c live.c st.c add.c \
 			sub.c and_encoding.c ldi_encoding.c lldi_encoding.c or_encoding.c \
-			sti_encoding.c xor_encoding.c
+			sti_encoding.c xor_encoding.c convert_header.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

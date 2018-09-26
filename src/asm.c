@@ -45,9 +45,13 @@ int		main(int argc, char *argv[])
 		printf("total program size = %d\n", asm_main->program_size);
 		name = get_file_name(argv[1]);
 		fd = open(name, O_RDWR | O_CLOEXEC | O_CREAT,S_IRWXU);
+		convert_header(asm_main, fd);
 		//fd = open(name, O_CREAT | O_WRONLY);
 		n = 0;
-		write(fd, &n, PROG_NAME_LENGTH + COMMENT_LENGTH);
+		//asm_main->header->magic; 4 bytes of the magic no.
+		//asm_main->header->prog_name[];  ........header
+		//asm_main->header->comment
+		//write(fd, &n, PROG_NAME_LENGTH + COMMENT_LENGTH);
 		convert_code(asm_main, fd);
 		close(fd);
 	}
