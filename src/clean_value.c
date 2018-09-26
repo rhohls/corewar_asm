@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ldi_encoding.c                                     :+:      :+:    :+:   */
+/*   clean_value.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 15:25:39 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:34:31 by fledwaba         ###   ########.fr       */
+/*   Created: 2018/09/26 17:54:02 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/26 17:56:04 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-int			i_byte_no(char c)
+long long		clean_value(long long n)
 {
-	if (c == '%')
-		return (2);
-	else if (ft_isdigit(c))
-		return (2);
-	else if (c == 'r')
-		return (1);
+	int		nu;
+
+	if (n < -2147483648)
+		nu = (2147483647 + (n + 2147483648)) + 1;
+	else if (n > 2147483647)
+		nu = ((n - 2147483647) + (-2147483648)) - 1;
 	else
-		return (-1);
+		nu = n;
+	if (nu >= -2147483648 && nu < 0)
+		n = 2147483647 + (nu + 2147483648) + 1;
+	else
+		n = nu;
+	return (n);
 }

@@ -6,20 +6,18 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 09:00:09 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/25 10:34:03 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/26 18:00:27 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-t_byte		*convert_code(t_asm *list, int fd)
+t_byte				*convert_code(t_asm *list, int fd)
 {
-    t_byte   *h;
-	t_asm_list *t;
+	t_byte			*h;
+	t_asm_list		*t;
 
 	t = list->final_list;
-	
-	
 	while (t)
 	{
 		if (ft_strstr(t->data, "live"))
@@ -56,5 +54,5 @@ t_byte		*convert_code(t_asm *list, int fd)
 			zjmp(t->data, fd);
 		t = t->next;
 	}
-    return (h);
+	return (h);
 }

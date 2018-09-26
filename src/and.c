@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 14:03:10 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:23:12 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/26 17:50:12 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		and_arg1(char *str, int fd)
 {
 	int			i;
 	long long	n;
-	
+
 	i = 0;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
