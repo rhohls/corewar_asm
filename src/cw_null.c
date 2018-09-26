@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/19 09:40:34 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:16:24 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	cw_null(char *str, int loc, t_asm_list *labels)
 {
 	str++;
-	loc ++;
+	loc++;
 	labels->location = 0;
 	return (0);
 }

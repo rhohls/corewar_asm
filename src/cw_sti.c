@@ -6,14 +6,14 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/26 12:18:40 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:18:40 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
 
-int			is_empty(char *line)
+int	is_empty(char *line)
 {
 	int i;
 
@@ -54,7 +54,6 @@ int	check_register(char *str)
 		if ((nbr > 0) && (nbr < 17))
 			return (1);
 	}
-	// printf("str: %s - str[0] |%c|   -   nbr %d\n", str, str[0], nbr);
 	return (0);
 }
 
@@ -65,7 +64,6 @@ int	check_indirect(char *str)
 	i = 0;
 	if (str[i] == '-')
 		i++;
-// printf("check indirect str = |%s| i = %d\n", str, i);
 	if (!is_valid_nbr(str, i))
 		return (0);
 	return (1);
@@ -81,7 +79,6 @@ char	*copy_till_space(char *str)
 	len = 0;
 	while (ft_strchr(LABEL_CHARS, str[len]))
 		len++;
-	//  printf("len = %d\n", len);
 	ret = NULL;
 	if (str[len] == ',')
 		len--;
@@ -101,30 +98,18 @@ int	is_valid_label(char *str, t_asm_list *labels)
 	t_asm_list	*temp;
 	char		*label;
 	int			ret;
-	// printf("str = %s vs %s\n", str, labels->data);
+
 	label = copy_till_space(str);
-	// ft_putendl("after copy till space");
 	temp = labels;
-	// printf("label = %s\n", label);
 	ret = 0;
-	// ft_putstr("before sev\n");
-	// ft_putstr(label);
-	// ft_putstr("before sev\n");
 	while (temp)
 	{
-		// ft_putstr(label);
-		// ft_putstr(" vs ");
-		// ft_putstr(temp->data);
-		// ft_putchar('\n');
-		// printf("label len =%lu\n", ft_strlen(label));
 		if (ft_strnequ(label, temp->data, ft_strlen(label)))
 			ret = 1;
-		// printf("returning %d\n", ret);
 		temp = temp->next;
 	}
 	if (label != NULL)
 		free(label);
-	// ft_putnbr(ret);
 	return (ret);
 }
 
@@ -132,8 +117,6 @@ int	check_direct(char *str, t_asm_list *labels)
 {
 	int sign;
 
-	// ft_putendl("checking direct");
-	// ft_putendl(str);
 	sign = 0;
 	if ((str[0] == '%') && (str[1] == LABEL_CHAR))
 	{
@@ -187,14 +170,6 @@ int	check_d_i(char *str, t_asm_list *labels)
 		return (2);
 	return (0);
 }
-
-// cw_sti:Y ***sti D=2 (not 4)
-// 		RRR		5
-// 		RIR		6
-// 		RDR		6
-// 		RRD		6
-// 		RID		7
-// 		RDD		7
 
 int	cw_sti(char *str, int loc, t_asm_list *labels)
 {

@@ -6,15 +6,11 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/20 09:22:56 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:18:52 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-
-/* {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0}
-cw_sub:Y
-		RRR		5 */
 
 int	cw_sub(char *str, int loc, t_asm_list *labels)
 {
