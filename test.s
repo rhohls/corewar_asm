@@ -1,3 +1,6 @@
+.name "livepls"
+.comment "p l s"
+
 # testing correct sti {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}
 sti r1, 5, %3
 sti r2, %5, %3
