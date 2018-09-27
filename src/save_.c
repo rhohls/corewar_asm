@@ -3,7 +3,7 @@
 
 /*
 ** Removes whitespace and comments
-** Then validates the commands 
+** Then validates the commands
 ** Then saves only commands(no labels) to a list
 */
 
