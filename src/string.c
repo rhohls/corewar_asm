@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:56:30 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 15:02:44 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 16:42:33 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ int	comments(char *line, int *valid)
 	*valid = 5;
 	return (1);
 }
-

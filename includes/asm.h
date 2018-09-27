@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 15:42:21 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 16:34:10 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <errno.h>
 # include <unistd.h>
 # define LINE_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789 ,%:-"
-
 
 typedef struct			s_asm_list
 {
@@ -86,67 +85,67 @@ char					*set_final_line(t_asm_list *node, t_asm_list *labels);
 void					save_final_list(t_asm **asm_main);
 void					set_label_loc(int line_num, int pos, t_asm_list *labels);
 void					set_command_loc(int line_num, int pos, t_asm_list *commands);
-void	save_sizes(t_asm **asm_main);
+void					save_sizes(t_asm **asm_main);
 /*
 ** Functions
 */
 
-int		cw_null(char *str, int loc, t_asm_list *labels);
-int		cw_live(char *str, int loc, t_asm_list *labels);
-int		cw_ld(char *str, int loc, t_asm_list *labels);
-int		cw_st(char *str, int loc, t_asm_list *labels);
-int		cw_add(char *str, int loc, t_asm_list *labels);
-int		cw_sub(char *str, int loc, t_asm_list *labels);
-int		cw_and(char *str, int loc, t_asm_list *labels);
-int		cw_or(char *str, int loc, t_asm_list *labels);
-int		cw_xor(char *str, int loc, t_asm_list *labels);
-int		cw_zjmp(char *str, int loc, t_asm_list *labels);
-int		cw_ldi(char *str, int loc, t_asm_list *labels);
-int		cw_sti(char *str, int loc, t_asm_list *labels);
-int		cw_fork(char *str, int loc, t_asm_list *labels);
-int		cw_lld(char *str, int loc, t_asm_list *labels);
-int		cw_lldi(char *str, int loc, t_asm_list *labels);
-int		cw_lfork(char *str, int loc, t_asm_list *labels);
-int		cw_aff(char *str, int loc, t_asm_list *labels);
-void	adjust_ret(int *ret, int *i, int hold, char *str);
+int						cw_null(char *str, int loc, t_asm_list *labels);
+int						cw_live(char *str, int loc, t_asm_list *labels);
+int						cw_ld(char *str, int loc, t_asm_list *labels);
+int						cw_st(char *str, int loc, t_asm_list *labels);
+int						cw_add(char *str, int loc, t_asm_list *labels);
+int						cw_sub(char *str, int loc, t_asm_list *labels);
+int						cw_and(char *str, int loc, t_asm_list *labels);
+int						cw_or(char *str, int loc, t_asm_list *labels);
+int						cw_xor(char *str, int loc, t_asm_list *labels);
+int						cw_zjmp(char *str, int loc, t_asm_list *labels);
+int						cw_ldi(char *str, int loc, t_asm_list *labels);
+int						cw_sti(char *str, int loc, t_asm_list *labels);
+int						cw_fork(char *str, int loc, t_asm_list *labels);
+int						cw_lld(char *str, int loc, t_asm_list *labels);
+int						cw_lldi(char *str, int loc, t_asm_list *labels);
+int						cw_lfork(char *str, int loc, t_asm_list *labels);
+int						cw_aff(char *str, int loc, t_asm_list *labels);
+void					adjust_ret(int *ret, int *i, int hold, char *str);
 
 static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 {
-    cw_null, cw_ld, cw_st, cw_add, cw_sub, cw_and, cw_or,
-    cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,
-    cw_lfork, cw_aff, cw_live
+	cw_null, cw_ld, cw_st, cw_add, cw_sub, cw_and, cw_or,
+	cw_xor, cw_zjmp, cw_ldi, cw_sti, cw_fork, cw_lld, cw_lldi,
+	cw_lfork, cw_aff, cw_live
 };
 
 /*
 **	converter functions
 */
-long long           long_atoi(const char *str);
-long long           clean_value(long long n);
-char                *hex(long long n, int bits);
-int                 get_byte_no(char c);
-int                 i_byte_no(char c);
+long long				long_atoi(const char *str);
+long long				clean_value(long long n);
+char					*hex(long long n, int bits);
+int						get_byte_no(char c);
+int						i_byte_no(char c);
 
-void                live(char *str, int fd);
-void                ld(char *str, int fd);
-void                st(char *str, int fd);
-void                add(char *str, int fd);
-void                sub(char *str, int fd);
-void                and(char *str, int fd);
-void                or(char *str, int fd);
-void                xor(char *str, int fd);
-void                zjmp(char *str, int fd);
-void                ldi(char *str, int fd);
-void                sti(char *str, int fd);
-void                ft_fork(char *str, int fd);
-void                lld(char *str, int fd);
-void                lldi(char *str, int fd);
-void                ft_lfork(char *str, int fd);
-void                aff(char *str, int fd);
-int	                check_encoding_byte(char *str, int i, int j);
-int	                check_sti(char *str, int i, int j);
-void        		convert_header(t_header *header, int fd);
-void				convert_code(t_asm *list, int fd);
-void   				store_core_int_4(int number, int fd);
-void  				store_core_int_2(int number, int fd);
+void					live(char *str, int fd);
+void					ld(char *str, int fd);
+void					st(char *str, int fd);
+void					add(char *str, int fd);
+void					sub(char *str, int fd);
+void					and(char *str, int fd);
+void					or(char *str, int fd);
+void					xor(char *str, int fd);
+void					zjmp(char *str, int fd);
+void					ldi(char *str, int fd);
+void					sti(char *str, int fd);
+void					ft_fork(char *str, int fd);
+void					lld(char *str, int fd);
+void					lldi(char *str, int fd);
+void					ft_lfork(char *str, int fd);
+void					aff(char *str, int fd);
+int						check_encoding_byte(char *str, int i, int j);
+int						check_sti(char *str, int i, int j);
+void					convert_header(t_header *header, int fd);
+void					convert_code(t_asm *list, int fd);
+void					store_core_int_4(int number, int fd);
+void					store_core_int_2(int number, int fd);
 
 #endif
