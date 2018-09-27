@@ -101,6 +101,16 @@ void	save_locations(t_asm **asm_main)
 	(*asm_main)->program_size = size;
 }
 
+int		label_lenght(char *str)
+{
+	int i;
+
+	i = 0;
+	while (ft_strchr(LABEL_CHARS ,str[i]) && str[i])
+		i++;
+	return (i);
+}
+
 char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 {
 	char *ret;
@@ -114,7 +124,8 @@ char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 	i = len_to_char(node->data, LABEL_CHAR);
 	while (label)
 	{
-		if (ft_strnequ(node->data + i + 1, label->data, ft_strlen(label->data)))
+		if ((label_lenght(node->data + i + 1)  == (int)ft_strlen(label->data)) &&
+		ft_strnequ(node->data + i + 1, label->data, ft_strlen(label->data)))
 		{
 			loc = ft_itoa(label->location - node->location);
 			len = ft_strlen(node->data) - ft_strlen(label->data) + ft_strlen(loc);

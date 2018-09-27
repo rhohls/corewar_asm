@@ -15,6 +15,7 @@
 
 int	cw_fork(char *str, int loc, t_asm_list *labels)
 {
+	printf("the string is |%s|\n", str);
 	int i;
 	int ret;
 
