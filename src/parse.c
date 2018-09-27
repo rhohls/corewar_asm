@@ -184,7 +184,6 @@ int	parse_list(t_asm **asm_main)
 	int			test;
 	int			name;
 	int			comment;
-
 	valid = 0;
 	temp = (*asm_main)->o_list;
 	name = 0;

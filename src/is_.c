@@ -106,7 +106,17 @@ int	is_comment(char *line, int *valid, t_asm **asm_main)
 	return (0);
 }
 
-int	is_command(char *line, int *valid)
+void	free_double(char **str)
+{
+	int i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
+
+int		is_command(char *line, int *valid)
 {
 	char	**commands;
 	int		i;
@@ -121,10 +131,9 @@ int	is_command(char *line, int *valid)
 		j++;
 
 	while (++i <= 16)
-	{
 		if (ft_strnequ(line + j, commands[i], ft_strlen(commands[i])))
 			flag = i;
-	}
+	free_double(commands);
 	if (flag > -1)
 	{
 		*valid = flag * -1;

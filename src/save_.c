@@ -42,6 +42,7 @@ void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 	loc_hash -= i;
 	line = ft_strsub(str, i, loc_hash - end);
 	temp = new_node(line, loc);
+	free(line);
 	add_node_front(&((*asm_main)->n_commands), temp);
 }
 
@@ -64,5 +65,6 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	if (*valid < 0)
 		save_commands(str + loc_colon, asm_main, valid, loc);
 	temp = new_node(line, loc);
+	free(line);
 	add_node_front(&((*asm_main)->n_labels), temp);
 }

@@ -6,13 +6,13 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/27 09:50:53 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 13:44:25 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-int		go_to_param(char *str, int label_size)
+int	go_to_param(char *str, int label_size)
 {
 	int i;
 
@@ -25,13 +25,20 @@ int		go_to_param(char *str, int label_size)
 	return (i);
 }
 
+int	set_ret(int hold)
+{
+	if (hold == 1)
+		return (1);
+	return (2);
+}
+
 int	cw_sti(char *str, int loc, t_asm_list *labels)
 {
 	int i;
 	int j;
 	int ret;
 	int hold;
-	
+
 	ret = 2;
 	i = go_to_param(str, 3);
 	if (check_register(str + i))
@@ -44,10 +51,7 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 			j = len_to_char(str + i, ' ');
 			i += j;
 			i++;
-			if (hold == 1)
-				ret += 1;
-			else
-				ret += 2;
+			ret += set_ret(hold);
 			if ((hold = check_r_d(str + i, labels)) > 0)
 				if (check_empty_end(str + i))
 					return (ret + hold);
