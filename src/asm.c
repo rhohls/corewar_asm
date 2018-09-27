@@ -1,11 +1,6 @@
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-/*
-**	len_to_char returns the index of the niddle on success
-**	returns -1 if niddle not found
-*/
-
 char	*get_file_name(char *str)
 {
 	char	*name;

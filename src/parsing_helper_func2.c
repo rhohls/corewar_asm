@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_helper_func2.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 13:49:32 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/27 13:51:39 by swilson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-int	is_valid_nbr(char *s, int sign)
+int		is_valid_nbr(char *s, int sign)
 {
 	int		nbr;
 	int		j;
@@ -19,7 +31,7 @@ int	is_valid_nbr(char *s, int sign)
 	return (0);
 }
 
-int	check_register(char *str)
+int		check_register(char *str)
 {
 	int nbr;
 
@@ -33,7 +45,7 @@ int	check_register(char *str)
 	return (0);
 }
 
-int	check_indirect(char *str)
+int		check_indirect(char *str)
 {
 	int i;
 
@@ -69,7 +81,7 @@ char	*copy_till_space(char *str)
 	return (ret);
 }
 
-int	is_valid_label(char *str, t_asm_list *labels)
+int		is_valid_label(char *str, t_asm_list *labels)
 {
 	t_asm_list	*temp;
 	char		*label;

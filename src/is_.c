@@ -1,37 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 13:59:33 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/27 14:01:45 by swilson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-int	save_header_name(char *line, t_asm **asm_main)
-{
-	int i;
-
-	i = 0;
-	if ((ft_strlen(line) - 1) > PROG_NAME_LENGTH)
-		error_(0, "name too long");
-	while ((line[i] != '"') && line[i])
-	{
-		(*asm_main)->header->prog_name[i] = line[i];
-		i++;
-	}
-	return (1);
-}
-
-int	save_header_comment(char *line, t_asm **asm_main)
-{
-	int i;
-
-	i = 0;
-	if ((ft_strlen(line) - 1) > COMMENT_LENGTH)
-		error_(0, "comment too long");
-	while ((line[i] != '"') && line[i])
-	{
-		(*asm_main)->header->comment[i] = line[i];
-		i++;
-	}
-	return (1);
-}
-
-int	is_name(char *line, int *valid, t_asm **asm_main)
+int		is_name(char *line, int *valid, t_asm **asm_main)
 {
 	int i;
 	int j;
@@ -59,7 +41,7 @@ int	is_name(char *line, int *valid, t_asm **asm_main)
 	return (0);
 }
 
-int	is_label(char *line, int *valid)
+int		is_label(char *line, int *valid)
 {
 	int i;
 	int j;
@@ -78,7 +60,7 @@ int	is_label(char *line, int *valid)
 	return (1);
 }
 
-int	is_comment(char *line, int *valid, t_asm **asm_main)
+int		is_comment(char *line, int *valid, t_asm **asm_main)
 {
 	int i;
 	int j;
@@ -86,7 +68,8 @@ int	is_comment(char *line, int *valid, t_asm **asm_main)
 	i = len_to_char(line, '.');
 	if (line[i] == '.')
 	{
-		if (!ft_strnequ(line + i, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)))
+		if (!ft_strnequ(line + i, COMMENT_CMD_STRING,
+			ft_strlen(COMMENT_CMD_STRING)))
 			return (0);
 		j = i - 1;
 		while (j >= 0 && is_white_space(line[i]))
@@ -129,7 +112,6 @@ int		is_command(char *line, int *valid)
 	flag = -1;
 	while (is_white_space(line[j]))
 		j++;
-
 	while (++i <= 16)
 		if (ft_strnequ(line + j, commands[i], ft_strlen(commands[i])))
 			flag = i;

@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 11:06:57 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 13:54:59 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ t_asm_list				*new_final_node(char *line, t_asm_list *command);
 int						go_to_param(char *str, int label_size);
 void					print_help(void);
 int						check_empty_end(char *str);
+int						save_header_comment(char *line, t_asm **asm_main);
+int						save_header_name(char *line, t_asm **asm_main);
 
 /*
 ** Functions

@@ -1,11 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   save_.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 13:54:06 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/27 13:54:06 by swilson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-/*
-** Removes whitespace and comments
-** Then validates the commands
-** Then saves only commands(no labels) to a list
-*/
+int	save_header_name(char *line, t_asm **asm_main)
+{
+	int i;
+
+	i = 0;
+	if ((ft_strlen(line) - 1) > PROG_NAME_LENGTH)
+		error_(0, "name too long");
+	while ((line[i] != '"') && line[i])
+	{
+		(*asm_main)->header->prog_name[i] = line[i];
+		i++;
+	}
+	return (1);
+}
+
+int	save_header_comment(char *line, t_asm **asm_main)
+{
+	int i;
+
+	i = 0;
+	if ((ft_strlen(line) - 1) > COMMENT_LENGTH)
+		error_(0, "comment too long");
+	while ((line[i] != '"') && line[i])
+	{
+		(*asm_main)->header->comment[i] = line[i];
+		i++;
+	}
+	return (1);
+}
+
 
 int	is_white_space_rev(char *s, int start)
 {
