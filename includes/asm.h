@@ -114,14 +114,6 @@ static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 /*
 **	converter functions
 */
-typedef struct      s_byte
-{
-    char            *str;
-    struct s_byte   *next;
-}                   t_byte;
-
-void                add_asm_node(t_byte **h, char *line);
-
 long long           long_atoi(const char *str);
 long long           clean_value(long long n);
 char                *hex(long long n, int bits);
@@ -153,8 +145,7 @@ int	                check_sti(char *str, int i, int j); //bksdbckjdsk
 //char                *check_xor(char *str, int i, int j);
 
 void        		convert_header(t_header *header, int fd);
-t_byte              *convert_code(t_asm *list, int fd);
-void                print_byte_list(t_byte *h);
+void				convert_code(t_asm *list, int fd);
 void   				store_core_int_4(int number, int fd);
 void  				store_core_int_2(int number, int fd);
 

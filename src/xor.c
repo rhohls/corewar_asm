@@ -12,33 +12,6 @@
 
 #include "../includes/asm.h"
 
-/*char        *check_xor(char *str, int i, int j)
-{
-    char       *s;
-
-    s = NULL;
-    if (str[i] == '%' && str[j] == '%')
-        s = ft_strdup("08 a4 ");
-    else if (str[i] == '%' && ft_isdigit(str[j]))
-        s = ft_strdup("08 b4 ");
-    else if (str[i] == '%' && str[j] == 'r')
-        s = ft_strdup("08 94 ");
-    else if (ft_isdigit(str[i]) && str[j] == '%')
-        s = ft_strdup("08 e4 ");
-    else if (ft_isdigit(str[i]) && ft_isdigit(str[j]))
-        s = ft_strdup("08 f4 ");
-    else if (ft_isdigit(str[i]) && str[j] == 'r')
-        s = ft_strdup("08 d4 ");
-    else if (str[i] == 'r' && str[j] == '%')
-        s = ft_strdup("08 64 ");
-    else if (str[i] == 'r' && ft_isdigit(str[j]))
-        s = ft_strdup("08 74 ");
-    else if (str[i] == 'r' && str[j] == 'r')
-        s = ft_strdup("08 54 ");
-    printf("s = %s\n", s);
-    return (s);
-}*/
-
 void			get_xor_opt_code(char *str, int fd)
 {
 	int		i;
