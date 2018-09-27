@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 14:46:23 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/27 15:14:35 by swilson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-
-void	initialize(t_asm **asm_main)
+void		initialize(t_asm **asm_main, char *argv)
 {
+	if (!correct_file(argv))
+		error_(0, "failed to open the file");
 	*asm_main = (t_asm*)malloc(sizeof(t_asm));
 	(*asm_main)->header = (t_header*)malloc(sizeof(t_header));
 	(*asm_main)->header->magic = (unsigned int)COREWAR_EXEC_MAGIC;
@@ -18,11 +31,11 @@ void	initialize(t_asm **asm_main)
 	(*asm_main)->program_size = 0;
 }
 
-char	**init_commands(void)
+char		**init_commands(void)
 {
 	char	**ret;
 
-	ret = (char **)malloc(sizeof(char*) *18);
+	ret = (char**)malloc(sizeof(char*) * 18);
 	ret[0] = NULL;
 	ret[1] = "ld";
 	ret[2] = "st";
@@ -44,13 +57,14 @@ char	**init_commands(void)
 	return (ret);
 }
 
-t_asm_list *new_final_node(char *line, t_asm_list *command)
+t_asm_list	*new_final_node(char *line, t_asm_list *command)
 {
 	t_asm_list *node;
 
 	node = NULL;
 	if (line)
-	{	node = (t_asm_list*)malloc(sizeof(t_asm_list));
+	{
+		node = (t_asm_list*)malloc(sizeof(t_asm_list));
 		node->data = ft_strdup(line);
 		node->line_no = command->line_no;
 		node->location = command->location;
@@ -61,13 +75,14 @@ t_asm_list *new_final_node(char *line, t_asm_list *command)
 	return (node);
 }
 
-t_asm_list *new_node(char *line, int pos)
+t_asm_list	*new_node(char *line, int pos)
 {
 	t_asm_list *node;
 
 	node = NULL;
 	if (line)
-	{	node = (t_asm_list*)malloc(sizeof(t_asm_list));
+	{
+		node = (t_asm_list*)malloc(sizeof(t_asm_list));
 		node->data = ft_strdup(line);
 		node->line_no = pos;
 		node->location = 0;
@@ -77,7 +92,7 @@ t_asm_list *new_node(char *line, int pos)
 	return (node);
 }
 
-void	add_node_front(t_asm_list **head, t_asm_list *node)
+void		add_node_front(t_asm_list **head, t_asm_list *node)
 {
 	t_asm_list *temp;
 

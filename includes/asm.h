@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 13:54:59 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 15:42:21 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef struct			s_asm
 
 void					exit_str(char *str);
 int						error_(int line_no, char *output);
-int 					correct_file(const char *file);
+int						correct_file(const char *file);
 t_asm_list				*read_from_file(char *file_name, t_asm **asm_main);
-void					initialize(t_asm **asm_main);
+void					initialize(t_asm **asm_main, char *name);
 char					**init_commands(void);
 t_asm_list				*new_node(char *line, int pos);
 void					add_node_front(t_asm_list **head, t_asm_list *node);
@@ -82,7 +82,11 @@ void					print_help(void);
 int						check_empty_end(char *str);
 int						save_header_comment(char *line, t_asm **asm_main);
 int						save_header_name(char *line, t_asm **asm_main);
-
+char					*set_final_line(t_asm_list *node, t_asm_list *labels);
+void					save_final_list(t_asm **asm_main);
+void					set_label_loc(int line_num, int pos, t_asm_list *labels);
+void					set_command_loc(int line_num, int pos, t_asm_list *commands);
+void	save_sizes(t_asm **asm_main);
 /*
 ** Functions
 */

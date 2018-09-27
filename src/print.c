@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 14:50:31 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/27 14:51:37 by swilson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
@@ -37,6 +49,7 @@ void	print_help(void)
 	ft_putstr("\te.g ./asm example.s\n\n");
 	ft_putstr("Valid instructions : only tabs and spaces are allowed before\n");
 	ft_putstr("\tand after the instruction name\n");
-	ft_putstr("\tuse a comma ',' or space ' '\n\tor both ', ' to separate the instruction arguments\n");
+	ft_putstr("\tuse a comma ',' or space ' '\n\tor both ', ");
+	ft_putstr("' to separate the instruction arguments\n");
 	exit(0);
 }
