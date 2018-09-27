@@ -6,53 +6,57 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 09:00:09 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/26 18:00:27 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 08:26:15 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-t_byte				*convert_code(t_asm *list, int fd)
+void			convert_sub(char *data, int fd)
 {
-	t_byte			*h;
-	t_asm_list		*t;
+	if (ft_strstr(data, "sti"))
+			sti(data, fd);
+	else if (ft_strstr(data, "st"))
+		st(data, fd);
+	else if (ft_strstr(data, "add"))
+		add(data, fd);
+	else if (ft_strstr(data, "sub"))
+		sub(data, fd);
+	else if (ft_strstr(data, "and"))
+		and(data, fd);
+	else if (ft_strstr(data, "lfork"))
+		ft_lfork(data, fd);
+	else if (ft_strstr(data, "fork"))
+		ft_fork(data, fd);
+	else if (ft_strstr(data, "xor"))
+		xor(data, fd);
+	else if (ft_strstr(data, "or"))
+		or(data, fd);
+	else if (ft_strstr(data, "zjmp"))
+		zjmp(data, fd);
+}
 
-	t = list->final_list;
-	while (t)
+void				convert_code(t_asm *list, int fd)
+{
+	t_asm_list		*tmp;
+
+	tmp = list->final_list;
+	while (tmp)
 	{
-		if (ft_strstr(t->data, "live"))
-			live(t->data, fd);
-		else if (ft_strstr(t->data, "aff"))
-			aff(t->data, fd);
-		else if (ft_strstr(t->data, "lldi"))
-			lldi(t->data, fd);
-		else if (ft_strstr(t->data, "ldi"))
-			ldi(t->data, fd);
-		else if (ft_strstr(t->data, "lld"))
-			lld(t->data, fd);
-		else if (ft_strstr(t->data, "ld"))
-			ld(t->data, fd);
-		else if (ft_strstr(t->data, "sti"))
-			sti(t->data, fd);
-		else if (ft_strstr(t->data, "st"))
-			st(t->data, fd);
-		else if (ft_strstr(t->data, "add"))
-			add(t->data, fd);
-		else if (ft_strstr(t->data, "sub"))
-			sub(t->data, fd);
-		else if (ft_strstr(t->data, "and"))
-			and(t->data, fd);
-		else if (ft_strstr(t->data, "lfork"))
-			ft_lfork(t->data, fd);
-		else if (ft_strstr(t->data, "fork"))
-			ft_fork(t->data, fd);
-		else if (ft_strstr(t->data, "xor"))
-			xor(t->data, fd);
-		else if (ft_strstr(t->data, "or"))
-			or(t->data, fd);
-		else if (ft_strstr(t->data, "zjmp"))
-			zjmp(t->data, fd);
-		t = t->next;
+		if (ft_strstr(tmp->data, "live"))
+			live(tmp->data, fd);
+		else if (ft_strstr(tmp->data, "aff"))
+			aff(tmp->data, fd);
+		else if (ft_strstr(tmp->data, "lldi"))
+			lldi(tmp->data, fd);
+		else if (ft_strstr(tmp->data, "ldi"))
+			ldi(tmp->data, fd);
+		else if (ft_strstr(tmp->data, "lld"))
+			lld(tmp->data, fd);
+		else if (ft_strstr(tmp->data, "ld"))
+			ld(tmp->data, fd);
+		else
+			convert_sub(tmp->data, fd);
+		tmp = tmp->next;
 	}
-	return (h);
 }
