@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:49:32 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 13:51:39 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 17:03:55 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ int		is_valid_nbr(char *s, int sign)
 	nbr = ft_atoi(s);
 	number = ft_itoa(nbr);
 	if (ft_strequ(line, number))
+	{
+		free(line);
+		free(number);
 		return (1);
+	}
+	free(line);
+	free(number);
 	return (0);
 }
 

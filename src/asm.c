@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:13:18 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 14:42:42 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 17:04:33 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*get_file_name(char *str)
 		i++;
 	tmp = ft_strsub(str, 0, i + 1);
 	name = ft_strjoinfree(tmp, "cor");
+	free(tmp);
 	return (name);
 }
 
@@ -39,6 +40,7 @@ void	writing_to_file(t_asm *asm_main, char *argv)
 	n = 0;
 	convert_code(asm_main, fd);
 	close(fd);
+	free(name);
 }
 
 int		main(int argc, char *argv[])
