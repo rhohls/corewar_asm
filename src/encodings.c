@@ -23,7 +23,7 @@ int			check_sti(char *str, int i, int j)
 	else if (ft_isdigit(str[i]) && str[j] == 'r')
 		return (116);
 	else if (str[i] == 'r' && str[j] == '%')
-		return (132);
+		return (88);
 	else if (str[i] == 'r' && str[j] == 'r')
 		return (84);
 	return (-1);
