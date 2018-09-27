@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:26:11 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:52:38 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:51:34 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		ldi_arg1(char *str, int fd)
 		write(fd, &n, 1);
 }
 
-void			ldi_arg2(char *str, int fd)
+void		ldi_arg2(char *str, int fd)
 {
 	long long		n;
 	int				i;

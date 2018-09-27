@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 09:27:35 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/23 11:09:06 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:53:22 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		or_arg1(char *str, int fd)
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
-		if (get_byte_no(str[i]) == 2)
+	if (get_byte_no(str[i]) == 2)
 		store_core_int_2(n, fd);
 	else if (get_byte_no(str[i]) == 4)
 		store_core_int_4(n, fd);

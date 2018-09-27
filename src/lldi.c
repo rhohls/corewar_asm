@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:09:01 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/22 09:33:27 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:52:05 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		lldi_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;

@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:34:58 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/27 07:00:30 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:54:12 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		st_arg1(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != 'r')
 		i++;
@@ -48,7 +48,7 @@ void		st_arg2(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;

@@ -6,16 +6,16 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 09:00:09 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/27 08:52:53 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 13:45:35 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void			convert_sub(char *data, int fd)
+void				convert_sub(char *data, int fd)
 {
 	if (ft_strstr(data, "sti"))
-			sti(data, fd);
+		sti(data, fd);
 	else if (ft_strstr(data, "st"))
 		st(data, fd);
 	else if (ft_strstr(data, "add"))

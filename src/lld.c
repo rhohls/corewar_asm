@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:00:08 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/22 09:03:50 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:50:56 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		lld_n(char *str, int i, int fd)
 {
 	long long		n;
-	
+
 	i++;
 	n = 13;
 	write(fd, &n, 1);
@@ -23,7 +23,7 @@ void		lld_n(char *str, int i, int fd)
 	write(fd, &n, 1);
 	n = long_atoi(&str[i]);
 	n = clean_value(n);
-	store_core_int_4(n, fd);	
+	store_core_int_4(n, fd);
 	while (str[i] && str[i] != 'r')
 		i++;
 	i++;
@@ -55,7 +55,7 @@ void		lld_no(char *str, int i, int fd)
 void		lld(char *str, int fd)
 {
 	int		i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
