@@ -1,4 +1,16 @@
-int     		value(int *p, const char *str)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   long_atoi.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/27 13:40:48 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/27 13:41:46 by fledwaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int					value(int *p, const char *str)
 {
 	int s;
 
@@ -18,9 +30,9 @@ int     		value(int *p, const char *str)
 
 long long			long_atoi(const char *str)
 {
-	int i;
-	long long n;
-	int sign;
+	int			i;
+	long long	n;
+	int			sign;
 
 	i = 0;
 	sign = value(&i, str);

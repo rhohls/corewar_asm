@@ -6,33 +6,33 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:35:22 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:58:20 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:48:36 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void    store_core_int_4(int number, int fd)
+void		store_core_int_4(int number, int fd)
 {
-    char *num;
-	char prog[4];
-    num = (char *)(&number);
-    
-    prog[0] = num[3];
-    prog[1] = num[2];
-    prog[2] = num[1];
-    prog[3] = num[0];
+	char	*num;
+	char	prog[4];
+
+	num = (char *)(&number);
+	prog[0] = num[3];
+	prog[1] = num[2];
+	prog[2] = num[1];
+	prog[3] = num[0];
 	write(fd, prog, 4);
 }
 
-void    store_core_int_2(int number, int fd)
+void		store_core_int_2(int number, int fd)
 {
-    char *num;
-	char prog[2];
-    num = (char *)(&number);
-    
-    prog[0] = num[1];
-    prog[1] = num[0];
+	char	*num;
+	char	prog[2];
+
+	num = (char *)(&number);
+	prog[0] = num[1];
+	prog[1] = num[0];
 	write(fd, prog, 2);
 }
 

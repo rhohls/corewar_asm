@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:39:37 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/21 15:25:21 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:43:29 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ld_no(char *str, int i, int fd)
 void		ld(char *str, int fd)
 {
 	int		i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;

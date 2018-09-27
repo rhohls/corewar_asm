@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 09:34:35 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/26 11:06:20 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 13:55:34 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		sti_arg3(char *str, int fd)
 {
 	long long	n;
 	int			i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
