@@ -56,7 +56,7 @@ void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 	j = 0;
 	while (is_white_space(str[j]))
 		j++;
-	line = ft_strsub(str, j, (j > 0) ? loc_colon - 1 : loc_colon);// malloc line
+	line = ft_strsub(str, j, (j > 0) ? loc_colon - 1 : loc_colon);
 	loc_colon++;
 	while (is_white_space(str[loc_colon]))
 		loc_colon++;

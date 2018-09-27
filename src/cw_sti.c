@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/27 07:57:35 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 09:50:53 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,8 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 			else
 				ret += 2;
 			if ((hold = check_r_d(str + i, labels)) > 0)
-			{
-				j = len_to_char(str + i, ' ');
-				if (is_empty(str + j) || j < 0)
+				if (check_empty_end(str + i))
 					return (ret + hold);
-			}
 		}
 	}
 	error_(loc, "check the format on line : ");

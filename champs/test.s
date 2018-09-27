@@ -2,7 +2,7 @@
 .comment "p l s"
 
 # testing correct sti {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}
-sti r1, 5, %3
+sti r1, 5, %3    	 	 	 		 
 sti r2, %5, %3
 sti r2, r3, r4
 
@@ -17,7 +17,7 @@ sti r2, r3, r4
 
 # testing correct st {T_REG, T_IND | T_REG}
 st r1, 3
-st r2, r4
+st r2, r4      
 st r1, 8
 
 #incorrect st                                                   ST

@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 08:17:34 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 11:06:57 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int						check_r_d_i(char *str, t_asm_list *labels);
 int						check_r_d(char *str, t_asm_list *labels);
 int						check_r_i(char *str);
 int						check_d_i(char *str, t_asm_list *labels);
-int						is_empty(char *line);
 void					print_name_comment(t_asm **asm_main, char *name);
 t_asm_list				*new_final_node(char *line, t_asm_list *command);
 int						go_to_param(char *str, int label_size);
 void					print_help(void);
+int						check_empty_end(char *str);
 
 /*
 ** Functions
@@ -136,14 +136,8 @@ void                lld(char *str, int fd);
 void                lldi(char *str, int fd);
 void                ft_lfork(char *str, int fd);
 void                aff(char *str, int fd);
-
-//char                *check_and(char *str, int i, int j);
-//char                *check_ldi(char *str, int i, int j);
 int	                check_encoding_byte(char *str, int i, int j);
-//char                *check_or(char *str, int i, int j);
-int	                check_sti(char *str, int i, int j); //bksdbckjdsk
-//char                *check_xor(char *str, int i, int j);
-
+int	                check_sti(char *str, int i, int j);
 void        		convert_header(t_header *header, int fd);
 void				convert_code(t_asm *list, int fd);
 void   				store_core_int_4(int number, int fd);

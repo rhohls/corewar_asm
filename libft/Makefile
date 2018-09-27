@@ -30,7 +30,7 @@ $(NAME): $(OFILES)
 	ranlib $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 norm:
 	norminette $(wordlist 1, 20, $(CFILES))

@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/27 08:00:12 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 09:45:38 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	cw_xor(char *str, int loc, t_asm_list *labels)
 			if (hold == 2)
 				ret += 2;
 			if (check_register(str + i))
-				return (ret + 1);
+				if (check_empty_end(str + i))
+					return (ret + 1);
 		}
 	}
 	error_(loc, "check the format on line : ");

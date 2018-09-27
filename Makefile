@@ -6,7 +6,7 @@
 #    By: swilson <swilson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
-#    Updated: 2018/09/27 09:00:12 by swilson          ###   ########.fr        #
+#    Updated: 2018/09/27 11:51:02 by swilson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c\
 			long_atoi.c ld.c and.c or.c xor.c zjmp.c \
 			ldi.c sti.c fork.c lld.c lldi.c lfork.c aff.c live.c st.c add.c \
 			sub.c encodings.c convert_header.c clean_value.c get_byte_numbers.c\
-			parsing_helper_func.c\
+			parsing_helper_func.c parsing_helper_func2.c\
 			cw_sti.c cw_sub.c cw_xor.c cw_zjmp.c convert.c long_atoi.c ld.c \
 			and.c or.c xor.c zjmp.c ldi.c sti.c fork.c lld.c lldi.c lfork.c \
 			aff.c live.c st.c add.c sub.c encodings.c convert_header.c \
@@ -46,11 +46,11 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./libft/
-	$(CC) $(LIB) $(LIB_NAME) $^ -o $@
+	@$(CC) $(LIB) $(LIB_NAME) $^ -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE)
-	mkdir -p $(OBJ_PATH)
-	$(CC) $(INC) -o $@ -c $<
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(INC) -o $@ -c $<
 
 norm:
 	norminette $(wordlist 1, 20, $(SRC))
@@ -66,6 +66,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f champs/*.cor
+	rm -f *.cor
 
 re: fclean all
 

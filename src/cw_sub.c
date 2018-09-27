@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/27 08:00:04 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 09:45:27 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	cw_sub(char *str, int loc, t_asm_list *labels)
 			i += len_to_char(str + i, ',');
 			i = (str[i + 1] == ' ') ? i + 2 : i + 1;
 			if (check_register(str + i))
-				return (ret + 1);
+				if (check_empty_end(str + i))
+					return (ret + 1);
 		}
 	}
 	error_(loc, "check the format on line : ");
