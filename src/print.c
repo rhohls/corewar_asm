@@ -30,3 +30,13 @@ void	print_name_comment(t_asm **asm_main, char *name)
 	ft_putstr("\t\t");
 	ft_putendl((*asm_main)->header->comment);
 }
+
+void	print_help(void)
+{
+	ft_putstr("Usage help : pass the '.s' file as an argument\n");
+	ft_putstr("\te.g ./asm example.s\n\n");
+	ft_putstr("Valid instructions : only tabs and spaces are allowed before\n");
+	ft_putstr("\tand after the instruction name\n");
+	ft_putstr("\tuse a comma ',' or space ' '\n\tor both ', ' to separate the instruction arguments\n");
+	exit(0);
+}

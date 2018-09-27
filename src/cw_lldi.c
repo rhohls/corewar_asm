@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/26 15:15:19 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 07:59:26 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	cw_lldi(char *str, int loc, t_asm_list *labels)
 	int ret;
 	int hold;
 
-	i = 5;
+	i = go_to_param(str, 4);
 	ret = 2;
 	(void)labels;
 	if ((hold = check_r_d_i(str + i, labels)) > 0)

@@ -6,7 +6,7 @@
 #    By: swilson <swilson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
-#    Updated: 2018/09/25 10:43:52 by fledwaba         ###   ########.fr        #
+#    Updated: 2018/09/27 07:35:38 by swilson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC_NAME = asm.c error.c file.c init.c is_.c parse.c print.c save_.c string.c\
 			cw_sti.c cw_sub.c cw_xor.c cw_zjmp.c convert.c print_byte_list.c \
 			add_asm_list.c long_atoi.c ld.c and.c or.c xor.c zjmp.c \
 			ldi.c sti.c fork.c lld.c lldi.c lfork.c aff.c live.c st.c add.c \
-			sub.c encodings.c convert_header.c clean_value.c get_byte_numbers.c
+			sub.c encodings.c convert_header.c clean_value.c get_byte_numbers.c\
+			parsing_helper_func.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

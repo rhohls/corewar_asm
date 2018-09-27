@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/26 15:13:38 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 08:17:34 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int						check_d_i(char *str, t_asm_list *labels);
 int						is_empty(char *line);
 void					print_name_comment(t_asm **asm_main, char *name);
 t_asm_list				*new_final_node(char *line, t_asm_list *command);
+int						go_to_param(char *str, int label_size);
+void					print_help(void);
 
 /*
 ** Functions

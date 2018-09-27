@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/26 15:14:13 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/27 07:58:19 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	cw_fork(char *str, int loc, t_asm_list *labels)
 	int i;
 	int ret;
 
-	i = 5;
+	i = go_to_param(str, 4);
 	ret = 1;
 	if (check_direct(str + i, labels))
 		return (ret + 2);

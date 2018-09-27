@@ -30,6 +30,8 @@ int		main(int argc, char *argv[])
 
 	if (argc == 2)
 	{
+		if (ft_strequ(argv[1], "-help"))
+			print_help();
 		if (!correct_file(argv[1]))
 			error_(0, "failed to open the file");
 		initialize(&asm_main);
@@ -53,6 +55,6 @@ int		main(int argc, char *argv[])
 		close(fd);
 	}
 	else
-		error_(0, "usage: need to pass a '.s' file as an argument");
+		error_(0, "usage: need to pass a '.s' file as an argument, \nrun './asm -help' for help\n");
 	return (0);
 }

@@ -24,7 +24,7 @@ t_asm_list	*read_from_file(char *file_name, t_asm **asm_main)
 	list = (*asm_main)->o_list;
 	if (fd < 3)
 	{
-		error_(0, "Error: There was an error opening the file \nReason: ");
+		ft_putstr("Error: There was an error opening the file \nReason: ");
 		ft_putendl(strerror(errno));
 		exit(0);
 	}

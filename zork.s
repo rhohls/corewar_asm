@@ -1,6 +1,5 @@
 .name "zork"
 
-.comment "kroz"
 
 l2:	sti r1, %:live, %2  #I am a comment
 		and r1, %0, r1

@@ -163,6 +163,20 @@ void	save_final_list(t_asm **asm_main)
 	}
 }
 
+void	set_comments_and_count(t_asm **asm_main, int name, int comment)
+{
+	if (name != 1 || comment != 1)
+	{
+		if (comment != 1 && name == 1)
+			ft_strcat((*asm_main)->header->comment, "too lazy to comment\n");
+		else
+			error_(0, "check your header information");
+	}
+	save_sizes(asm_main);
+	save_locations(asm_main);
+	save_final_list(asm_main);
+}
+
 int	parse_list(t_asm **asm_main)
 {
 	int			valid;
@@ -182,30 +196,14 @@ int	parse_list(t_asm **asm_main)
 		else if (valid == 3)
 			save_label(temp->data, asm_main, &valid, temp->line_no);
 		else if (valid == 1)
-		{
-		//	(*asm_main)->header->name;
-			name++;//save name
-		}
+			name++;
 		else if (valid == 2)
-		{
-			//	(*asm_main)->header->comment;
-			comment++;//save comment
-		}
+			comment++;
 		else if (valid < 0)
 			save_commands(temp->data, asm_main, &valid, temp->line_no);
 		temp = temp->next;
 	}
-	if (name != 1 || comment != 1)
-	{
-		if (comment != 1 && name == 1)
-			printf("fix your comment stupid!\n");//save comment
-		else
-			error_(0, "check your header information");
-	}
-	save_sizes(asm_main);
-	save_locations(asm_main);
-	save_final_list(asm_main);
-
+	set_comments_and_count(asm_main, name, comment);
 	return (1);
 }
 
