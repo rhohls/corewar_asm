@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:34:58 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/22 10:47:43 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/27 07:00:30 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void		st_op_code(char *str, int fd)
 	while (str[i] && str[i] != 'r' && !ft_isdigit(str[i]))
 		i++;
 	if (str[i] == 'r')
-		n = 5;
+		n = 80;
 	else
-		n = 7;
+		n = 112;
 	write(fd, &n, 1);
 }
 

@@ -1,7 +1,7 @@
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-int correct_file(const char *file)
+int			correct_file(const char *file)
 {
 	int len;
 
@@ -37,4 +37,3 @@ t_asm_list	*read_from_file(char *file_name, t_asm **asm_main)
 	}
 	return (list);
 }
-

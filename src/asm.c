@@ -39,8 +39,8 @@ int		main(int argc, char *argv[])
 		asm_main->header->prog_size = asm_main->program_size;
 		// printf("\n\nnew lists\n\n");
 		// print_list(asm_main->n_commands);
-		// printf("\n\nnew label list\n\n");
-		// print_list(asm_main->n_labels);
+		printf("\n\nnew label list\n\n");
+		print_list(asm_main->n_labels);
 		printf("\n\nFINAL list\n\n");
 		print_list(asm_main->final_list);
 		printf("total program size = %d\n", asm_main->program_size);

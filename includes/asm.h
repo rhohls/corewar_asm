@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/26 12:16:20 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:13:38 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		cw_lld(char *str, int loc, t_asm_list *labels);
 int		cw_lldi(char *str, int loc, t_asm_list *labels);
 int		cw_lfork(char *str, int loc, t_asm_list *labels);
 int		cw_aff(char *str, int loc, t_asm_list *labels);
-void	adjust_ret(int *ret, int j, int *i, int hold, char *str);
+void	adjust_ret(int *ret, int *i, int hold, char *str);
 
 static int (*g_func_ptr[17])(char *str, int loc, t_asm_list *labels) =
 {
