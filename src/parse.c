@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:39:20 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/28 07:42:13 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 07:44:31 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	set_comments_and_count(t_asm **asm_main, int name, int comment)
 	save_final_list(asm_main);
 }
 
-int	parse_list(t_asm **asm_main)
+int		parse_list(t_asm **asm_main)
 {
 	int			valid;
 	t_asm_list	*temp;
@@ -93,7 +93,7 @@ int	parse_list(t_asm **asm_main)
 	return (1);
 }
 
-int	balancing_quotations(char *line)
+int		balancing_quotations(char *line)
 {
 	int	i;
 
@@ -107,7 +107,7 @@ int	balancing_quotations(char *line)
 			if (line[i - 1] == '\\')
 				continue ;
 			else
-				break;
+				break ;
 		}
 	}
 
