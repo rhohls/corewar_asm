@@ -63,5 +63,6 @@ int		main(int argc, char *argv[])
 	else
 		error_(0, "usage: need to pass a '.s' file as an argument, \n\
 		run './asm -help' for help\n");
+	exit(0);
 	return (0);
 }
