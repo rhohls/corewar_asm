@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:54:18 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/28 07:58:42 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 09:10:59 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int		is_white_space_rev(char *s, int start)
 	int i;
 
 	i = 0;
-	while (((s[start - i] == ' ') || (s[start - i] == '\t')) && (s[start] != '\0'))
+	while (((s[start - i] == ' ') || (s[start - i] == '\t'))
+			&& (s[start] != '\0'))
 	{
 		i++;
 		if (start - i < 0)

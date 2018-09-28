@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:39:20 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/28 07:51:35 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 09:07:57 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int		parse_list(t_asm **asm_main)
 	int			name;
 	int			comment;
 
-	valid = 0;
 	temp = (*asm_main)->o_list;
 	name = 0;
 	comment = 0;

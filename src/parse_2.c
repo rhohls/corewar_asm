@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:52:21 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/28 07:53:14 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 08:47:30 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void		save_sizes(t_asm **asm_main)
 			command = sanitised_command(temp->line_no, (*asm_main)->n_commands);
 			if (command != NULL)
 			{
-				size = (*(g_func_ptr[(valid * -1)]))(command->data, command->line_no, (*asm_main)->n_labels);
+				size = (*(g_func_ptr[(valid * -1)]))(command->data,
+						command->line_no, (*asm_main)->n_labels);
 				if (size)
 					command->size = size;
 			}
