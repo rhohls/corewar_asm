@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/28 07:37:25 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/28 07:37:27 by fledwaba         ###   ########.fr       */
+/*   Created: 2018/09/28 07:39:20 by swilson           #+#    #+#             */
+/*   Updated: 2018/09/28 07:44:31 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-void	save_locations_helper(t_asm_list *commands, t_asm_list *labels, int	*size)
+void	save_loc_helper(t_asm_list *commands, t_asm_list *labels, int *size)
 {
 	while (commands)
 	{
 		while (labels && labels->line_no <= commands->line_no)
 		{
-			set_label_loc(labels->line_no, size, labels);
+			set_label_loc(labels->line_no, *size, labels);
 			labels = labels->next;
 		}
-		set_command_loc(commands->line_no, size, commands);
-		size += commands->size;
+		set_command_loc(commands->line_no, *size, commands);
+		*size += commands->size;
 		commands = commands->next;
 		if (!commands && labels)
 		{
 			while (labels)
 			{
-				set_label_loc(labels->line_no, size, labels);
+				set_label_loc(labels->line_no, *size, labels);
 				labels = labels->next;
 			}
 		}
@@ -45,7 +45,7 @@ void	save_locations(t_asm **asm_main)
 	commands = (*asm_main)->n_commands;
 	labels = (*asm_main)->n_labels;
 	size = 0;
-	save_locations_helper(commands, labels, &size);
+	save_loc_helper(commands, labels, &size);
 	(*asm_main)->comm_size = size;
 	(*asm_main)->program_size = size;
 }
@@ -93,7 +93,7 @@ int		parse_list(t_asm **asm_main)
 	return (1);
 }
 
-int	balancing_quotations(char *line)
+int		balancing_quotations(char *line)
 {
 	int	i;
 
@@ -107,7 +107,7 @@ int	balancing_quotations(char *line)
 			if (line[i - 1] == '\\')
 				continue ;
 			else
-				break;
+				break ;
 		}
 	}
 
