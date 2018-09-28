@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:39:20 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/28 11:04:44 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:19:48 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		parse_list(t_asm **asm_main)
 	int			test;
 	int			name;
 	int			comment;
-	valid = 0;
+
 	temp = (*asm_main)->o_list;
 	name = 0;
 	comment = 0;
@@ -110,7 +110,6 @@ int		balancing_quotations(char *line)
 				break ;
 		}
 	}
-
 	i++;
 	while (line[i] && is_white_space(line[i]))
 		i++;
