@@ -1,15 +1,8 @@
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-void	save_locations(t_asm **asm_main)
+void	save_locations_helper(t_asm_list *commands, t_asm_list *labels, int	*size)
 {
-	t_asm_list	*commands;
-	t_asm_list	*labels;
-	int			size;
-
-	commands = (*asm_main)->n_commands;
-	labels = (*asm_main)->n_labels;
-	size = 0;
 	while (commands)
 	{
 		while (labels && labels->line_no <= commands->line_no)
@@ -29,6 +22,18 @@ void	save_locations(t_asm **asm_main)
 			}
 		}
 	}
+}
+
+void	save_locations(t_asm **asm_main)
+{
+	t_asm_list	*commands;
+	t_asm_list	*labels;
+	int			size;
+
+	commands = (*asm_main)->n_commands;
+	labels = (*asm_main)->n_labels;
+	size = 0;
+	save_locations_helper(commands, labels, &size);
 	(*asm_main)->comm_size = size;
 	(*asm_main)->program_size = size;
 }
@@ -74,23 +79,6 @@ int	parse_list(t_asm **asm_main)
 	}
 	set_comments_and_count(asm_main, name, comment);
 	return (1);
-}
-
-int	line_type(char *line, int *valid, t_asm **asm_main)
-{
-	if (is_name(line, valid, asm_main))
-		return (1);
-	else if (is_comment(line, valid, asm_main))
-		return (2);
-	else if (is_label(line, valid))
-		return (3);
-	else if (is_blank(line, valid))
-		return (4);
-	else if (comments(line, valid))
-		return (5);
-	else if (is_command(line, valid))
-		return (6);
-	return (0);
 }
 
 int	balancing_quotations(char *line)

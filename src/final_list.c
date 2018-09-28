@@ -77,3 +77,20 @@ void	save_final_list(t_asm **asm_main)
 		temp = temp->next;
 	}
 }
+
+int	line_type(char *line, int *valid, t_asm **asm_main)
+{
+	if (is_name(line, valid, asm_main))
+		return (1);
+	else if (is_comment(line, valid, asm_main))
+		return (2);
+	else if (is_label(line, valid))
+		return (3);
+	else if (is_blank(line, valid))
+		return (4);
+	else if (comments(line, valid))
+		return (5);
+	else if (is_command(line, valid))
+		return (6);
+	return (0);
+}
