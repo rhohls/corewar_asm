@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/28 07:37:25 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/28 07:37:27 by fledwaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
@@ -52,7 +64,7 @@ void	set_comments_and_count(t_asm **asm_main, int name, int comment)
 	save_final_list(asm_main);
 }
 
-int	parse_list(t_asm **asm_main)
+int		parse_list(t_asm **asm_main)
 {
 	int			valid;
 	t_asm_list	*temp;

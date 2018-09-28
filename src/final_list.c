@@ -6,13 +6,13 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:08:13 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 14:32:00 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 07:34:55 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-int		label_lenght(char *str)
+int			label_lenght(char *str)
 {
 	int i;
 
@@ -22,7 +22,7 @@ int		label_lenght(char *str)
 	return (i);
 }
 
-char	*adjust_final_line(t_asm_list *node, t_asm_list *label, int i)
+char		*adjust_final_line(t_asm_list *node, t_asm_list *label, int i)
 {
 	size_t	len;
 	char	*loc;
@@ -38,7 +38,7 @@ char	*adjust_final_line(t_asm_list *node, t_asm_list *label, int i)
 	return (ret);
 }
 
-char	*set_final_line(t_asm_list *node, t_asm_list *labels)
+char		*set_final_line(t_asm_list *node, t_asm_list *labels)
 {
 	char		*ret;
 	int			i;
@@ -57,7 +57,7 @@ char	*set_final_line(t_asm_list *node, t_asm_list *labels)
 	return (NULL);
 }
 
-void	save_final_list(t_asm **asm_main)
+void		save_final_list(t_asm **asm_main)
 {
 	char		*line;
 	t_asm_list	*temp;
@@ -78,7 +78,7 @@ void	save_final_list(t_asm **asm_main)
 	}
 }
 
-int	line_type(char *line, int *valid, t_asm **asm_main)
+int			line_type(char *line, int *valid, t_asm **asm_main)
 {
 	if (is_name(line, valid, asm_main))
 		return (1);

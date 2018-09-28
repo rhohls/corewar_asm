@@ -24,7 +24,6 @@ char	*get_file_name(char *str)
 		i++;
 	tmp = ft_strsub(str, 0, i + 1);
 	name = ft_strjoinfree(tmp, "cor");
-	free(tmp);
 	return (name);
 }
 
