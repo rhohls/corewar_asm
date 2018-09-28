@@ -6,13 +6,13 @@ boost:	ld %12,r2 #7
 	ld %4,r4 #7
 	ld %5,r7 #7
 
-	sti r1,%:live1,%1 #7
+	sti r1,%:live1,%1 #7he
 live1:	live %66 #5
 	sti r1,%:fork0,%1 #7
 	sti r1,%:fork1,%1 #7
 	sti r1,%:fork2,%1 #7 
 	sti r1,%:wait,%1 #7
-	ldi %:wait,%2,%9
+	ldi %:wait,%-2,r6 #7
 	sti r1,%:master,%1 #7
 	sti r1,%:numero1,%1 #7
 	sti r1,%:numero2,%1 #7

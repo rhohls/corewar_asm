@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:13:18 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 17:04:33 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 11:06:17 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,16 @@ int		main(int argc, char *argv[])
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
 		parse_list(&asm_main);
 		asm_main->header->prog_size = asm_main->program_size;
+		// ft_putendl("\n\n list");
+		// print_list(asm_main->final_list);
+		// ft_putendl("\n\nlabels");
+		// print_list(asm_main->n_labels);
 		print_name_comment(&asm_main, argv[1]);
 		writing_to_file(asm_main, argv[1]);
 	}
 	else
 		error_(0, "usage: need to pass a '.s' file as an argument, \n\
 		run './asm -help' for help\n");
+	exit(0);
 	return (0);
 }

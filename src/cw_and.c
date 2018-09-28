@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/27 11:31:35 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:08:35 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	adjust_ret(int *ret, int *i, int hold, char *str)
 	int j;
 
 	j = len_to_char(str + *i, ' ');
+	if (j == -1)
+		j = len_to_char(str + *i, ',');
 	(*i) += j;
 	(*i)++;
 	if (hold == 1)

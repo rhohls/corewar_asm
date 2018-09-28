@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ldi.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:26:11 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/27 13:51:34 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 11:05:53 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		get_ldi_opt_code(char *str, int fd)
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;
 	j = i;
-	while (str[j] != ' ')
+	while (str[j] != ',')
 		j++;
 	while (str[j] && str[j] != 'r' && str[j] != '%' && !ft_isdigit(str[j]))
 		j++;
@@ -94,6 +94,7 @@ void		ldi_arg3(char *str, int fd)
 
 void		ldi(char *str, int fd)
 {
+	
 	get_ldi_opt_code(str, fd);
 	ldi_arg1(str, fd);
 	ldi_arg2(str, fd);
