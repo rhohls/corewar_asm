@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   save_.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/27 13:54:06 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 16:58:53 by fledwaba         ###   ########.fr       */
+/*   Created: 2018/09/28 07:54:18 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/28 07:58:42 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 #include <stdlib.h>
 
-int	save_header_name(char *line, t_asm **asm_main)
+int		save_header_name(char *line, t_asm **asm_main)
 {
 	int i;
 
@@ -28,7 +28,7 @@ int	save_header_name(char *line, t_asm **asm_main)
 	return (1);
 }
 
-int	save_header_comment(char *line, t_asm **asm_main)
+int		save_header_comment(char *line, t_asm **asm_main)
 {
 	int i;
 
@@ -43,28 +43,27 @@ int	save_header_comment(char *line, t_asm **asm_main)
 	return (1);
 }
 
-
-int	is_white_space_rev(char *s, int start)
+int		is_white_space_rev(char *s, int start)
 {
 	int i;
 
 	i = 0;
 	while (((s[start - i] == ' ') || (s[start - i] == '\t')) && (s[start] != '\0'))
 	{
-			i++;
-			if (start - i < 0)
-				break ;
+		i++;
+		if (start - i < 0)
+			break ;
 	}
 	return (i);
 }
 
 void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 {
-	t_asm_list *temp;
-	char *line;
-	int i;
-	int loc_hash;
-	int	end;
+	t_asm_list	*temp;
+	char		*line;
+	int			i;
+	int			loc_hash;
+	int			end;
 
 	i = 0;
 	loc_hash = len_to_char(str, '#');
@@ -85,10 +84,10 @@ void	save_commands(char *str, t_asm **asm_main, int *valid, int loc)
 
 void	save_label(char *str, t_asm **asm_main, int *valid, int loc)
 {
-	t_asm_list *temp;
-	char *line;
-	int loc_colon;
-	int j;
+	t_asm_list	*temp;
+	char		*line;
+	int			loc_colon;
+	int			j;
 
 	loc_colon = len_to_char(str, LABEL_CHAR);
 	j = 0;

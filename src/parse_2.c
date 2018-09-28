@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/28 07:52:21 by fledwaba          #+#    #+#             */
+/*   Updated: 2018/09/28 07:53:14 by fledwaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/asm.h"
 #include <stdlib.h>
 
@@ -15,7 +27,7 @@ t_asm_list	*sanitised_command(int loc, t_asm_list *list)
 	return (NULL);
 }
 
-void	save_sizes(t_asm **asm_main)
+void		save_sizes(t_asm **asm_main)
 {
 	t_asm_list	*temp;
 	t_asm_list	*command;
@@ -42,7 +54,7 @@ void	save_sizes(t_asm **asm_main)
 	}
 }
 
-void	set_label_loc(int line_num, int pos, t_asm_list *labels)
+void		set_label_loc(int line_num, int pos, t_asm_list *labels)
 {
 	t_asm_list *temp;
 
@@ -55,7 +67,7 @@ void	set_label_loc(int line_num, int pos, t_asm_list *labels)
 	}
 }
 
-void	set_command_loc(int line_num, int pos, t_asm_list *commands)
+void		set_command_loc(int line_num, int pos, t_asm_list *commands)
 {
 	t_asm_list *temp;
 
