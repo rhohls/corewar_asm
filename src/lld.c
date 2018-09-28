@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lld.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:00:08 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/27 13:50:56 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 11:39:43 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ void		lld_n(char *str, int i, int fd)
 void		lld_no(char *str, int i, int fd)
 {
 	long long		n;
-	char			*t;
-	char			*t1;
-	char			*s;
 
 	n = 13;
 	write(fd, &n, 1);

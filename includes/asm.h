@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:20:07 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/27 16:34:10 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 11:32:22 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int						parse_list(t_asm **asm_main);
 int						line_type(char *line, int *valid, t_asm **asm_main);
 int						balancing_quotations(char *line);
 void					print_list(t_asm_list *list);
-void					save_commands(char *str, t_asm **asm_main, int *valid, int loc);
-void					save_label(char *str, t_asm **asm_main, int *valid, int n);
+void					save_commands(char *str, t_asm **main, int *v, int loc);
+void					save_label(char *str, t_asm **asm_main, int *v, int n);
 int						len_to_char(char *s, int c);
 int						is_white_space(char c);
 int						is_blank(char *line, int *valid);
@@ -83,8 +83,8 @@ int						save_header_comment(char *line, t_asm **asm_main);
 int						save_header_name(char *line, t_asm **asm_main);
 char					*set_final_line(t_asm_list *node, t_asm_list *labels);
 void					save_final_list(t_asm **asm_main);
-void					set_label_loc(int line_num, int pos, t_asm_list *labels);
-void					set_command_loc(int line_num, int pos, t_asm_list *commands);
+void					set_label_loc(int line_n, int pos, t_asm_list *labels);
+void					set_command_loc(int line_n, int pos, t_asm_list *comd);
 void					save_sizes(t_asm **asm_main);
 /*
 ** Functions

@@ -6,7 +6,7 @@
 #    By: swilson <swilson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/20 09:23:02 by swilson           #+#    #+#              #
-#    Updated: 2018/09/27 15:19:59 by swilson          ###   ########.fr        #
+#    Updated: 2018/09/28 11:36:57 by swilson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCLUDE)
 	@mkdir -p $(OBJ_PATH)
-	@$(CC) $(INC) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 norm:
 	norminette $(wordlist 1, 20, $(SRC))

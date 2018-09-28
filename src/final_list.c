@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:08:13 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/28 07:34:55 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/09/28 11:39:19 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char		*adjust_final_line(t_asm_list *node, t_asm_list *label, int i)
 
 char		*set_final_line(t_asm_list *node, t_asm_list *labels)
 {
-	char		*ret;
 	int			i;
 	t_asm_list	*label;
 

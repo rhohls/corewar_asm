@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/28 11:04:13 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:38:50 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 	int ret;
 	int hold;
 
-	ret = 2;
+	ret = 3;
 	i = go_to_param(str, 3);
 	if (check_register(str + i))
 	{
-		ret += 1;
 		j = len_to_char(str, ',');
 		i = (str[j + 1] == ' ') ? j + 2 : j + 1;
 		if ((hold = check_r_d_i(str + i, labels)) > 0)
@@ -51,8 +50,7 @@ int	cw_sti(char *str, int loc, t_asm_list *labels)
 			j = len_to_char(str + i, ' ');
 			if (j == -1)
 				j = len_to_char(str + i, ',');
-			i += j;
-			i++;
+			i += j + 1;
 			ret += set_ret(hold);
 			if ((hold = check_r_d(str + i, labels)) > 0)
 				if (check_empty_end(str + i))

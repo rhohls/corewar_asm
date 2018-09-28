@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 14:13:18 by swilson           #+#    #+#             */
-/*   Updated: 2018/09/28 11:06:17 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:40:46 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ void	writing_to_file(t_asm *asm_main, char *argv)
 int		main(int argc, char *argv[])
 {
 	t_asm	*asm_main;
-	int		fd;
-	char	*name;
-	int		n;
 
 	if (argc == 2)
 	{
@@ -57,10 +54,6 @@ int		main(int argc, char *argv[])
 		asm_main->o_list = read_from_file(argv[1], &asm_main);
 		parse_list(&asm_main);
 		asm_main->header->prog_size = asm_main->program_size;
-		// ft_putendl("\n\n list");
-		// print_list(asm_main->final_list);
-		// ft_putendl("\n\nlabels");
-		// print_list(asm_main->n_labels);
 		print_name_comment(&asm_main, argv[1]);
 		writing_to_file(asm_main, argv[1]);
 	}

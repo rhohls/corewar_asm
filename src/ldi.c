@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:26:11 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/28 11:05:53 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:24:44 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void		ldi_arg3(char *str, int fd)
 
 void		ldi(char *str, int fd)
 {
-	
 	get_ldi_opt_code(str, fd);
 	ldi_arg1(str, fd);
 	ldi_arg2(str, fd);

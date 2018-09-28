@@ -6,7 +6,7 @@
 /*   By: swilson <swilson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:30:32 by rhohls            #+#    #+#             */
-/*   Updated: 2018/09/28 11:08:35 by swilson          ###   ########.fr       */
+/*   Updated: 2018/09/28 11:37:31 by swilson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		cw_and(char *str, int loc, t_asm_list *labels)
 	int i;
 	int ret;
 	int hold;
-	int j;
 
 	i = go_to_param(str, 3);
 	ret = 2;
