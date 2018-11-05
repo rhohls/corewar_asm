@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 15:18:53 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/23 11:09:03 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/11/05 11:51:06 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void			xor_arg1(char *str, int fd)
 	i = 0;
 	while (str[i] && str[i] != ' ' && str[i] != '\t')
 		i++;
-	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
+	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i])
+			&& str[i] != '-')
 		i++;
-	if (!ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]) && str[i] != '-')
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
@@ -64,9 +65,10 @@ void			xor_arg2(char *str, int fd)
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
-	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
+	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i])
+			&& str[i] != '-')
 		i++;
-	if (!ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]) && str[i] != '-')
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);

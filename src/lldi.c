@@ -6,7 +6,7 @@
 /*   By: fledwaba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:09:01 by fledwaba          #+#    #+#             */
-/*   Updated: 2018/09/27 13:52:05 by fledwaba         ###   ########.fr       */
+/*   Updated: 2018/11/05 11:49:09 by fledwaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void		lldi_arg1(char *str, int fd)
 	i = 0;
 	while (str[i] && str[i] != ' ' && str[i] != '\t')
 		i++;
-	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
+	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i])
+			&& str[i] != '-')
 		i++;
-	if (!ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]) && str[i] != '-')
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
 	n = clean_value(n);
 	if (i_byte_no(str[i]) == 2)
-		store_core_int_2(n, fd);
+		store_core_int_2(n, fd); 
 	else
 		write(fd, &n, 1);
 }
@@ -61,9 +62,10 @@ void		lldi_arg2(char *str, int fd)
 	i = 0;
 	while (str[i] && str[i] != ',')
 		i++;
-	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
+	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i])
+			&& str[i] != '-')
 		i++;
-	if (!ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]) && str[i] != '-')
 		n = long_atoi(&str[i + 1]);
 	else
 		n = long_atoi(&str[i]);
