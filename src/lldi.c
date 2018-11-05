@@ -38,7 +38,7 @@ void		lldi_arg1(char *str, int fd)
 	int			i;
 
 	i = 0;
-	while (str[i] && str[i] != ' ')
+	while (str[i] && str[i] != ' ' && str[i] != '\t')
 		i++;
 	while (str[i] && str[i] != 'r' && str[i] != '%' && !ft_isdigit(str[i]))
 		i++;

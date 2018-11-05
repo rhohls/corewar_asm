@@ -20,8 +20,11 @@ char	*get_file_name(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] && str[i] != '.')
+	while (str[i])
 		i++;
+	i--;
+	while (i > 0 && str[i] != '.')
+		i--;
 	tmp = ft_strsub(str, 0, i + 1);
 	name = ft_strjoinfree(tmp, "cor");
 	return (name);
@@ -56,6 +59,7 @@ int		main(int argc, char *argv[])
 		asm_main->header->prog_size = asm_main->program_size;
 		print_name_comment(&asm_main, argv[1]);
 		writing_to_file(asm_main, argv[1]);
+
 	}
 	else
 		error_(0, "usage: need to pass a '.s' file as an argument, \n\
